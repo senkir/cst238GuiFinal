@@ -13,6 +13,13 @@
 		4EBA6BDE1395F6CB005074DB /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4EBA6BDC1395F6CB005074DB /* Credits.rtf */; };
 		4EBA6BE11395F6CB005074DB /* lab3AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6BE01395F6CB005074DB /* lab3AppDelegate.m */; };
 		4EBA6BE41395F6CB005074DB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EBA6BE21395F6CB005074DB /* MainMenu.xib */; };
+		4EBA6BFA13960111005074DB /* OITTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6BEE13960111005074DB /* OITTimeModel.m */; };
+		4EBA6BFB13960111005074DB /* OITSevenSegmentDigitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6BF013960111005074DB /* OITSevenSegmentDigitController.m */; };
+		4EBA6BFC13960111005074DB /* OITImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6BF213960111005074DB /* OITImageView.m */; };
+		4EBA6BFD13960111005074DB /* OITDigitalNumberSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6BF413960111005074DB /* OITDigitalNumberSet.m */; };
+		4EBA6BFE13960111005074DB /* OITDigitalClockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6BF613960111005074DB /* OITDigitalClockController.m */; };
+		4EBA6C0213960646005074DB /* OITFuelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6C0113960646005074DB /* OITFuelModel.m */; };
+		4EBA6C0513960981005074DB /* OITLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6C0413960981005074DB /* OITLogger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +36,20 @@
 		4EBA6BDF1395F6CB005074DB /* lab3AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lab3AppDelegate.h; sourceTree = "<group>"; };
 		4EBA6BE01395F6CB005074DB /* lab3AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lab3AppDelegate.m; sourceTree = "<group>"; };
 		4EBA6BE31395F6CB005074DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		4EBA6BEE13960111005074DB /* OITTimeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITTimeModel.m; sourceTree = "<group>"; };
+		4EBA6BEF13960111005074DB /* OITTimeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITTimeModel.h; sourceTree = "<group>"; };
+		4EBA6BF013960111005074DB /* OITSevenSegmentDigitController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITSevenSegmentDigitController.m; sourceTree = "<group>"; };
+		4EBA6BF113960111005074DB /* OITSevenSegmentDigitController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITSevenSegmentDigitController.h; sourceTree = "<group>"; };
+		4EBA6BF213960111005074DB /* OITImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITImageView.m; sourceTree = "<group>"; };
+		4EBA6BF313960111005074DB /* OITImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITImageView.h; sourceTree = "<group>"; };
+		4EBA6BF413960111005074DB /* OITDigitalNumberSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITDigitalNumberSet.m; sourceTree = "<group>"; };
+		4EBA6BF513960111005074DB /* OITDigitalNumberSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITDigitalNumberSet.h; sourceTree = "<group>"; };
+		4EBA6BF613960111005074DB /* OITDigitalClockController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITDigitalClockController.m; sourceTree = "<group>"; };
+		4EBA6BF713960111005074DB /* OITDigitalClockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITDigitalClockController.h; sourceTree = "<group>"; };
+		4EBA6C0013960646005074DB /* OITFuelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITFuelModel.h; sourceTree = "<group>"; };
+		4EBA6C0113960646005074DB /* OITFuelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITFuelModel.m; sourceTree = "<group>"; };
+		4EBA6C0313960981005074DB /* OITLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITLogger.h; sourceTree = "<group>"; };
+		4EBA6C0413960981005074DB /* OITLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITLogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +136,12 @@
 		4EBA6BEB1395F70E005074DB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4EBA6BEF13960111005074DB /* OITTimeModel.h */,
+				4EBA6BEE13960111005074DB /* OITTimeModel.m */,
+				4EBA6C0013960646005074DB /* OITFuelModel.h */,
+				4EBA6C0113960646005074DB /* OITFuelModel.m */,
+				4EBA6C0313960981005074DB /* OITLogger.h */,
+				4EBA6C0413960981005074DB /* OITLogger.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -122,6 +149,8 @@
 		4EBA6BEC1395F723005074DB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4EBA6BF313960111005074DB /* OITImageView.h */,
+				4EBA6BF213960111005074DB /* OITImageView.m */,
 				4EBA6BE21395F6CB005074DB /* MainMenu.xib */,
 			);
 			name = View;
@@ -130,6 +159,12 @@
 		4EBA6BED1395F72C005074DB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4EBA6BF113960111005074DB /* OITSevenSegmentDigitController.h */,
+				4EBA6BF013960111005074DB /* OITSevenSegmentDigitController.m */,
+				4EBA6BF513960111005074DB /* OITDigitalNumberSet.h */,
+				4EBA6BF413960111005074DB /* OITDigitalNumberSet.m */,
+				4EBA6BF713960111005074DB /* OITDigitalClockController.h */,
+				4EBA6BF613960111005074DB /* OITDigitalClockController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -196,6 +231,13 @@
 			files = (
 				4EBA6BDB1395F6CB005074DB /* main.m in Sources */,
 				4EBA6BE11395F6CB005074DB /* lab3AppDelegate.m in Sources */,
+				4EBA6BFA13960111005074DB /* OITTimeModel.m in Sources */,
+				4EBA6BFB13960111005074DB /* OITSevenSegmentDigitController.m in Sources */,
+				4EBA6BFC13960111005074DB /* OITImageView.m in Sources */,
+				4EBA6BFD13960111005074DB /* OITDigitalNumberSet.m in Sources */,
+				4EBA6BFE13960111005074DB /* OITDigitalClockController.m in Sources */,
+				4EBA6C0213960646005074DB /* OITFuelModel.m in Sources */,
+				4EBA6C0513960981005074DB /* OITLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
