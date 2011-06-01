@@ -20,6 +20,9 @@
 		4EBA6BFE13960111005074DB /* OITDigitalClockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6BF613960111005074DB /* OITDigitalClockController.m */; };
 		4EBA6C0213960646005074DB /* OITFuelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6C0113960646005074DB /* OITFuelModel.m */; };
 		4EBA6C0513960981005074DB /* OITLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6C0413960981005074DB /* OITLogger.m */; };
+		4EBA6C081396180F005074DB /* AModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6C071396180F005074DB /* AModel.m */; };
+		4EBA6C0C13961BE1005074DB /* OITCarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6C0A13961BE0005074DB /* OITCarController.m */; };
+		4EBA6C0D13961BE1005074DB /* OITCarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EBA6C0B13961BE0005074DB /* OITCarController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,11 @@
 		4EBA6C0113960646005074DB /* OITFuelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITFuelModel.m; sourceTree = "<group>"; };
 		4EBA6C0313960981005074DB /* OITLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITLogger.h; sourceTree = "<group>"; };
 		4EBA6C0413960981005074DB /* OITLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITLogger.m; sourceTree = "<group>"; };
+		4EBA6C061396180F005074DB /* AModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AModel.h; sourceTree = "<group>"; };
+		4EBA6C071396180F005074DB /* AModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AModel.m; sourceTree = "<group>"; };
+		4EBA6C0913961BE0005074DB /* OITCarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITCarController.h; sourceTree = "<group>"; };
+		4EBA6C0A13961BE0005074DB /* OITCarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITCarController.m; sourceTree = "<group>"; };
+		4EBA6C0B13961BE0005074DB /* OITCarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OITCarController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +150,8 @@
 				4EBA6C0113960646005074DB /* OITFuelModel.m */,
 				4EBA6C0313960981005074DB /* OITLogger.h */,
 				4EBA6C0413960981005074DB /* OITLogger.m */,
+				4EBA6C061396180F005074DB /* AModel.h */,
+				4EBA6C071396180F005074DB /* AModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -152,6 +162,7 @@
 				4EBA6BF313960111005074DB /* OITImageView.h */,
 				4EBA6BF213960111005074DB /* OITImageView.m */,
 				4EBA6BE21395F6CB005074DB /* MainMenu.xib */,
+				4EBA6C0B13961BE0005074DB /* OITCarController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -165,6 +176,8 @@
 				4EBA6BF413960111005074DB /* OITDigitalNumberSet.m */,
 				4EBA6BF713960111005074DB /* OITDigitalClockController.h */,
 				4EBA6BF613960111005074DB /* OITDigitalClockController.m */,
+				4EBA6C0913961BE0005074DB /* OITCarController.h */,
+				4EBA6C0A13961BE0005074DB /* OITCarController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -219,6 +232,7 @@
 				4EBA6BD81395F6CB005074DB /* InfoPlist.strings in Resources */,
 				4EBA6BDE1395F6CB005074DB /* Credits.rtf in Resources */,
 				4EBA6BE41395F6CB005074DB /* MainMenu.xib in Resources */,
+				4EBA6C0D13961BE1005074DB /* OITCarController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +252,8 @@
 				4EBA6BFE13960111005074DB /* OITDigitalClockController.m in Sources */,
 				4EBA6C0213960646005074DB /* OITFuelModel.m in Sources */,
 				4EBA6C0513960981005074DB /* OITLogger.m in Sources */,
+				4EBA6C081396180F005074DB /* AModel.m in Sources */,
+				4EBA6C0C13961BE1005074DB /* OITCarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

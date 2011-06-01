@@ -11,14 +11,13 @@
 
 @implementation OITFuelModel
 
-@synthesize fuel     = _fuel;
 @synthesize delegate = _delegate;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        _maxFuel = [[NSNumber numberWithFloat:13.0] retain];;
+        _maxValue = 13.0; //gallons
     }
     
     return self;
@@ -26,17 +25,17 @@
 
 - (void)dealloc
 {
-    [_maxFuel release];
-    _maxFuel = nil;
-    [_fuel release];
-    _fuel = nil;
     [super dealloc];
 }
 
-- (void)refill:(NSNumber*)fuel {
-    
+- (void)refill {
+    _value = _maxValue;
 }
-- (void)decrement {
-    
+
+- (void)decrementBy:(float)value {
+    [super decrementBy:value];
+    if (_value == 0 && _delegate) {
+        [_delegate fuelIsEmpty:self];
+    }
 }
 @end

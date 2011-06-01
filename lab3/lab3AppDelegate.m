@@ -7,6 +7,7 @@
 //
 
 #import "lab3AppDelegate.h"
+#import "OITCarController.h"
 
 @implementation lab3AppDelegate
 
@@ -14,7 +15,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    // TODO: attach CarController
 }
 
 @end

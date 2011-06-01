@@ -6,23 +6,18 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "AModel.h"
 
 @protocol FuelModelDelegate <NSObject>
 - (void)fuelIsEmpty:(id)sender;
-- (void)fuelDidDecrease:(id)sender;
 @end
 
-@interface OITFuelModel : NSObject {
+@interface OITFuelModel : AModel {
 @private
-    NSNumber* _fuel;
-    NSNumber* _maxFuel;
     id<FuelModelDelegate> _delegate;
 }
-@property (nonatomic, retain) NSNumber* fuel;
 @property (nonatomic, retain) id<FuelModelDelegate> delegate;
 
-- (void)refill:(NSNumber*)fuel;
-- (void)decrement;
+- (void)refill;
 
 @end
