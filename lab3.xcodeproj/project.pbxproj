@@ -21,12 +21,12 @@
 		4EBA6BD01395F6CB005074DB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		4EBA6BD11395F6CB005074DB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		4EBA6BD21395F6CB005074DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		4EBA6BD51395F6CB005074DB /* lab3-Info.plist */ = {isa = PBXFileReference; path = "lab3-Info.plist"; sourceTree = "<group>"; };
+		4EBA6BD51395F6CB005074DB /* lab3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "lab3-Info.plist"; sourceTree = "<group>"; };
 		4EBA6BD71395F6CB005074DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4EBA6BD91395F6CB005074DB /* lab3-Prefix.pch */ = {isa = PBXFileReference; path = "lab3-Prefix.pch"; sourceTree = "<group>"; };
+		4EBA6BD91395F6CB005074DB /* lab3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lab3-Prefix.pch"; sourceTree = "<group>"; };
 		4EBA6BDA1395F6CB005074DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4EBA6BDD1395F6CB005074DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		4EBA6BDF1395F6CB005074DB /* lab3AppDelegate.h */ = {isa = PBXFileReference; path = lab3AppDelegate.h; sourceTree = "<group>"; };
+		4EBA6BDF1395F6CB005074DB /* lab3AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lab3AppDelegate.h; sourceTree = "<group>"; };
 		4EBA6BE01395F6CB005074DB /* lab3AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lab3AppDelegate.m; sourceTree = "<group>"; };
 		4EBA6BE31395F6CB005074DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,7 +84,7 @@
 			children = (
 				4EBA6BDF1395F6CB005074DB /* lab3AppDelegate.h */,
 				4EBA6BE01395F6CB005074DB /* lab3AppDelegate.m */,
-				4EBA6BE21395F6CB005074DB /* MainMenu.xib */,
+				4EBA6BEA1395F6FB005074DB /* Classes */,
 				4EBA6BD41395F6CB005074DB /* Supporting Files */,
 			);
 			path = lab3;
@@ -100,6 +100,38 @@
 				4EBA6BDC1395F6CB005074DB /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4EBA6BEA1395F6FB005074DB /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4EBA6BEC1395F723005074DB /* View */,
+				4EBA6BED1395F72C005074DB /* Controller */,
+				4EBA6BEB1395F70E005074DB /* Model */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		4EBA6BEB1395F70E005074DB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4EBA6BEC1395F723005074DB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4EBA6BE21395F6CB005074DB /* MainMenu.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		4EBA6BED1395F72C005074DB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
