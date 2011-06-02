@@ -29,7 +29,7 @@
      */
     NSAffineTransform *rotateTF = [NSAffineTransform transform];
     
-    NSSize mySize = [[self image] size];
+//    NSSize mySize = [[self image] size];
     NSPoint centerPoint = NSMakePoint(90, 100);
     
     [rotateTF translateXBy: centerPoint.x yBy: centerPoint.y];
@@ -42,11 +42,4 @@
     [self unlockFocus];
 
 }
-
-//- (void)setRotationInDegrees:(float)rotationInDegrees {
-//    if (_rotationInDegrees != rotationInDegrees {
-//        _rotationInDegrees = rotationInDegrees;
-//        [self
-//    }
-//}
 @end

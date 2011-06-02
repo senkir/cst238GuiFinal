@@ -7,12 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "OITTimerManager.h"
+#import "OITLogger.h"
 
-
-@interface OITCarController : NSViewController {
+@interface OITCarController : NSViewController <OITTimeManagerDelegate> {
 @private
-    
+    OITTimerManager* _timerManager;
+    NSThread* _thread;
 }
+
+- (void)startUpdateTimer;
 
 //UI Interactions
 - (void)gasPedalPressed;

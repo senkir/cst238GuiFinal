@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E3706C6139757ED00C790F7 /* OITTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3706C5139757ED00C790F7 /* OITTimerManager.m */; };
 		4EBA6BCE1395F6CB005074DB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EBA6BCD1395F6CB005074DB /* Cocoa.framework */; };
 		4EBA6BD81395F6CB005074DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EBA6BD61395F6CB005074DB /* InfoPlist.strings */; };
 		4EBA6BDB1395F6CB005074DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6BDA1395F6CB005074DB /* main.m */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E3706C4139757EC00C790F7 /* OITTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITTimerManager.h; sourceTree = "<group>"; };
+		4E3706C5139757ED00C790F7 /* OITTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITTimerManager.m; sourceTree = "<group>"; };
 		4EBA6BC91395F6CB005074DB /* lab3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lab3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EBA6BCD1395F6CB005074DB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		4EBA6BD01395F6CB005074DB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -178,6 +181,8 @@
 				4EBA6BF613960111005074DB /* OITDigitalClockController.m */,
 				4EBA6C0913961BE0005074DB /* OITCarController.h */,
 				4EBA6C0A13961BE0005074DB /* OITCarController.m */,
+				4E3706C4139757EC00C790F7 /* OITTimerManager.h */,
+				4E3706C5139757ED00C790F7 /* OITTimerManager.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 				4EBA6C0513960981005074DB /* OITLogger.m in Sources */,
 				4EBA6C081396180F005074DB /* AModel.m in Sources */,
 				4EBA6C0C13961BE1005074DB /* OITCarController.m in Sources */,
+				4E3706C6139757ED00C790F7 /* OITTimerManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +374,7 @@
 				4EBA6BE91395F6CB005074DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

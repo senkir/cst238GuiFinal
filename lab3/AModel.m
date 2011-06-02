@@ -12,6 +12,7 @@
 @implementation AModel
 
 @synthesize value = _value;
+@synthesize delta = _delta;
 
 - (id)init
 {
@@ -28,18 +29,26 @@
     [super dealloc];
 }
 
-- (void)incrementBy:(float) value {
+- (void)incrementValueBy:(float) value {
     self.value += value;
     if (_value > _maxValue) {
         _value = _maxValue;
     }
 }
 
-- (void)decrementBy:(float) value {
+- (void)decrementValueBy:(float) value {
     _value -= value;
     if (_value < 0 ) {
         _value = 0;
     }
+}
+
+- (void)incrementDeltaBy:(float) delta {
+    
+}
+
+- (void)decrementDeltaBy:(float) delta {
+    
 }
 
 - (float)percentOfMax {

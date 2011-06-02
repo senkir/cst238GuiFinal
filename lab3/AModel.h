@@ -13,12 +13,18 @@
 @protected
     float _value;
     float _maxValue;
+    float _delta;
 }
 @property (nonatomic, assign) float value;
+@property (nonatomic, assign) float delta;
 
-- (void)incrementBy:(float) value;
+- (void)incrementValueBy:(float) value;
 
-- (void)decrementBy:(float) value;
+- (void)decrementValueBy:(float) value;
+
+- (void)incrementDeltaBy:(float) delta;
+
+- (void)decrementDeltaBy:(float) delta;
 
 /**
  * Returns float value between 0 and 1 representing how full this model object is.

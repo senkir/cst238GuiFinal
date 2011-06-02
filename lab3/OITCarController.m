@@ -22,6 +22,9 @@
 }
 - (void)dealloc
 {
+    [_thread release];
+    _thread = nil;
+    
     [super dealloc];
 }
 
@@ -34,13 +37,24 @@
     //TODO: turn the car on
     
     //TODO:  apply gas
+    
 }
+
+- (void)startUpdateTimer {
+    _timerManager = [[OITTimerManager alloc] init];
+    _thread = [[NSThread alloc] initWithTarget:_timerManager selector:@selector(buildThread:) object:self];
+}
+
 
 - (void)gasPedalPressed {
     
 }
 
 - (void)brakePedalPressed {
+    
+}
+
+- (void)updateDisplay {
     
 }
 @end
