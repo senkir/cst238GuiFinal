@@ -1,3 +1,15 @@
+Travis Churchill
 cst238 Final Project
 
 Dials and Widgets
+This project is designed to be a GUI that represents a car Dashboard.  It will have a number of widgets to indicate various stats that might be seen on a car.
+
+These Include dials to indicate:
+Speedometer
+RPM
+Oil
+Temperature
+Odometer
+Trip Meter
+Electric Charge
+Gear
