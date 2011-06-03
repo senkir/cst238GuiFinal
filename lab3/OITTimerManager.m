@@ -7,7 +7,7 @@
 //
 
 #import "OITTimerManager.h"
-
+#import "OITLogger.h"
 
 @implementation OITTimerManager
 
@@ -17,7 +17,6 @@
 {
     self = [super init];
     if (self) {
-        _updateTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:_delegate selector:@selector(updateDisplay) userInfo:nil repeats:true];
         
     }
     
@@ -35,6 +34,12 @@
 
 - (void)startTimerWithDelegate:(id<OITTimeManagerDelegate>)delegate {
     _delegate = delegate;
+    [OITLogger logFromSender:[self description] message:@"starting timer"];
+    _updateTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:_delegate selector:@selector(updateDisplay) userInfo:nil repeats:true];
 
+}
+
+- (void)buildThread:(id)sender {
+    [OITLogger logFromSender:[self description] message:@"building thread"];
 }
 @end

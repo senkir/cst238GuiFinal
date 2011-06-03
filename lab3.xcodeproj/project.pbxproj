@@ -24,6 +24,13 @@
 		4EBA6C081396180F005074DB /* AModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6C071396180F005074DB /* AModel.m */; };
 		4EBA6C0C13961BE1005074DB /* OITCarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6C0A13961BE0005074DB /* OITCarController.m */; };
 		4EBA6C0D13961BE1005074DB /* OITCarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EBA6C0B13961BE0005074DB /* OITCarController.xib */; };
+		4ED83EB31398BACA00E663C0 /* OITSevenSegmentDigitController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ED83EA81398BACA00E663C0 /* OITSevenSegmentDigitController.xib */; };
+		4ED83EB41398BACA00E663C0 /* OITDigitalClockController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ED83EA91398BACA00E663C0 /* OITDigitalClockController.xib */; };
+		4ED83EB51398BACA00E663C0 /* OITClockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED83EAA1398BACA00E663C0 /* OITClockController.m */; };
+		4ED83EB61398BACA00E663C0 /* OITClockAnalogHand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED83EAC1398BACA00E663C0 /* OITClockAnalogHand.m */; };
+		4ED83EB71398BACA00E663C0 /* OITAnalogClockController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ED83EAE1398BACA00E663C0 /* OITAnalogClockController.xib */; };
+		4ED83EB81398BACA00E663C0 /* OITAnalogClockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED83EAF1398BACA00E663C0 /* OITAnalogClockController.m */; };
+		4ED83EB91398BACA00E663C0 /* OITAbstractClockElementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED83EB11398BACA00E663C0 /* OITAbstractClockElementController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +68,17 @@
 		4EBA6C0913961BE0005074DB /* OITCarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITCarController.h; sourceTree = "<group>"; };
 		4EBA6C0A13961BE0005074DB /* OITCarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITCarController.m; sourceTree = "<group>"; };
 		4EBA6C0B13961BE0005074DB /* OITCarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OITCarController.xib; sourceTree = "<group>"; };
+		4ED83EA81398BACA00E663C0 /* OITSevenSegmentDigitController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OITSevenSegmentDigitController.xib; sourceTree = "<group>"; };
+		4ED83EA91398BACA00E663C0 /* OITDigitalClockController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OITDigitalClockController.xib; sourceTree = "<group>"; };
+		4ED83EAA1398BACA00E663C0 /* OITClockController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITClockController.m; sourceTree = "<group>"; };
+		4ED83EAB1398BACA00E663C0 /* OITClockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITClockController.h; sourceTree = "<group>"; };
+		4ED83EAC1398BACA00E663C0 /* OITClockAnalogHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITClockAnalogHand.m; sourceTree = "<group>"; };
+		4ED83EAD1398BACA00E663C0 /* OITClockAnalogHand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITClockAnalogHand.h; sourceTree = "<group>"; };
+		4ED83EAE1398BACA00E663C0 /* OITAnalogClockController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OITAnalogClockController.xib; sourceTree = "<group>"; };
+		4ED83EAF1398BACA00E663C0 /* OITAnalogClockController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITAnalogClockController.m; sourceTree = "<group>"; };
+		4ED83EB01398BACA00E663C0 /* OITAnalogClockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITAnalogClockController.h; sourceTree = "<group>"; };
+		4ED83EB11398BACA00E663C0 /* OITAbstractClockElementController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITAbstractClockElementController.m; sourceTree = "<group>"; };
+		4ED83EB21398BACA00E663C0 /* OITAbstractClockElementController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITAbstractClockElementController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +158,7 @@
 				4EBA6BEC1395F723005074DB /* View */,
 				4EBA6BED1395F72C005074DB /* Controller */,
 				4EBA6BEB1395F70E005074DB /* Model */,
+				4ED83EA61398B9F800E663C0 /* Clock Files */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -147,8 +166,6 @@
 		4EBA6BEB1395F70E005074DB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4EBA6BEF13960111005074DB /* OITTimeModel.h */,
-				4EBA6BEE13960111005074DB /* OITTimeModel.m */,
 				4EBA6C0013960646005074DB /* OITFuelModel.h */,
 				4EBA6C0113960646005074DB /* OITFuelModel.m */,
 				4EBA6C0313960981005074DB /* OITLogger.h */,
@@ -173,18 +190,38 @@
 		4EBA6BED1395F72C005074DB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4EBA6BF113960111005074DB /* OITSevenSegmentDigitController.h */,
-				4EBA6BF013960111005074DB /* OITSevenSegmentDigitController.m */,
-				4EBA6BF513960111005074DB /* OITDigitalNumberSet.h */,
-				4EBA6BF413960111005074DB /* OITDigitalNumberSet.m */,
-				4EBA6BF713960111005074DB /* OITDigitalClockController.h */,
-				4EBA6BF613960111005074DB /* OITDigitalClockController.m */,
 				4EBA6C0913961BE0005074DB /* OITCarController.h */,
 				4EBA6C0A13961BE0005074DB /* OITCarController.m */,
 				4E3706C4139757EC00C790F7 /* OITTimerManager.h */,
 				4E3706C5139757ED00C790F7 /* OITTimerManager.m */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		4ED83EA61398B9F800E663C0 /* Clock Files */ = {
+			isa = PBXGroup;
+			children = (
+				4ED83EA81398BACA00E663C0 /* OITSevenSegmentDigitController.xib */,
+				4ED83EA91398BACA00E663C0 /* OITDigitalClockController.xib */,
+				4ED83EAA1398BACA00E663C0 /* OITClockController.m */,
+				4ED83EAB1398BACA00E663C0 /* OITClockController.h */,
+				4ED83EAC1398BACA00E663C0 /* OITClockAnalogHand.m */,
+				4ED83EAD1398BACA00E663C0 /* OITClockAnalogHand.h */,
+				4ED83EAE1398BACA00E663C0 /* OITAnalogClockController.xib */,
+				4ED83EAF1398BACA00E663C0 /* OITAnalogClockController.m */,
+				4ED83EB01398BACA00E663C0 /* OITAnalogClockController.h */,
+				4ED83EB11398BACA00E663C0 /* OITAbstractClockElementController.m */,
+				4ED83EB21398BACA00E663C0 /* OITAbstractClockElementController.h */,
+				4EBA6BEF13960111005074DB /* OITTimeModel.h */,
+				4EBA6BEE13960111005074DB /* OITTimeModel.m */,
+				4EBA6BF113960111005074DB /* OITSevenSegmentDigitController.h */,
+				4EBA6BF013960111005074DB /* OITSevenSegmentDigitController.m */,
+				4EBA6BF513960111005074DB /* OITDigitalNumberSet.h */,
+				4EBA6BF413960111005074DB /* OITDigitalNumberSet.m */,
+				4EBA6BF713960111005074DB /* OITDigitalClockController.h */,
+				4EBA6BF613960111005074DB /* OITDigitalClockController.m */,
+			);
+			name = "Clock Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +275,9 @@
 				4EBA6BDE1395F6CB005074DB /* Credits.rtf in Resources */,
 				4EBA6BE41395F6CB005074DB /* MainMenu.xib in Resources */,
 				4EBA6C0D13961BE1005074DB /* OITCarController.xib in Resources */,
+				4ED83EB31398BACA00E663C0 /* OITSevenSegmentDigitController.xib in Resources */,
+				4ED83EB41398BACA00E663C0 /* OITDigitalClockController.xib in Resources */,
+				4ED83EB71398BACA00E663C0 /* OITAnalogClockController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +300,10 @@
 				4EBA6C081396180F005074DB /* AModel.m in Sources */,
 				4EBA6C0C13961BE1005074DB /* OITCarController.m in Sources */,
 				4E3706C6139757ED00C790F7 /* OITTimerManager.m in Sources */,
+				4ED83EB51398BACA00E663C0 /* OITClockController.m in Sources */,
+				4ED83EB61398BACA00E663C0 /* OITClockAnalogHand.m in Sources */,
+				4ED83EB81398BACA00E663C0 /* OITAnalogClockController.m in Sources */,
+				4ED83EB91398BACA00E663C0 /* OITAbstractClockElementController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

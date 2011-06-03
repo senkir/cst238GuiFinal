@@ -10,5 +10,5 @@
 
 
 @interface OITLogger : NSObject 
-+ (void)log:(NSString*)sender message:(NSString*)message;
++ (void)logFromSender:(NSString*)sender message:(NSString*)message;
 @end

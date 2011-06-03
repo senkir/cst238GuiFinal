@@ -11,7 +11,7 @@
 
 @implementation OITLogger
 
-+ (void)log:(NSString *)sender message:(NSString *)message {
++ (void)logFromSender:(NSString *)sender message:(NSString *)message {
     NSLog(@"%@: %@", sender, message);
 }
 @end

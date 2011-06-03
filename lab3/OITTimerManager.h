@@ -22,4 +22,5 @@
 @property (nonatomic, retain) id<OITTimeManagerDelegate> delegate;
 
 - (void)startTimerWithDelegate:(id<OITTimeManagerDelegate>)delegate;
+- (void)buildThread:(id)sender;
 @end

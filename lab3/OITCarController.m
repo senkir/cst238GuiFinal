@@ -41,20 +41,22 @@
 }
 
 - (void)startUpdateTimer {
+    [OITLogger logFromSender:[self description] message:@"start update timer"];
     _timerManager = [[OITTimerManager alloc] init];
+    [_timerManager startTimerWithDelegate:self];
     _thread = [[NSThread alloc] initWithTarget:_timerManager selector:@selector(buildThread:) object:self];
 }
 
 
 - (void)gasPedalPressed {
-    
+    [OITLogger logFromSender:[self description] message:@"gas pedal pressed"];
 }
 
 - (void)brakePedalPressed {
-    
+    [OITLogger logFromSender:[self description] message:@"brake pedal pressed"];
 }
 
 - (void)updateDisplay {
-    
+    [OITLogger logFromSender:[self description] message:@"display should update!"];
 }
 @end

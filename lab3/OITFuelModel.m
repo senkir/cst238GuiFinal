@@ -33,7 +33,7 @@
 }
 
 - (void)decrementBy:(float)value {
-    [super decrementBy:value];
+    [super decrementValueBy:value];
     if (_value == 0 && _delegate) {
         [_delegate fuelIsEmpty:self];
     }

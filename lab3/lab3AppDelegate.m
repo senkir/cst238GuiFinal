@@ -8,6 +8,7 @@
 
 #import "lab3AppDelegate.h"
 #import "OITCarController.h"
+#import "OITLogger.h"
 
 @implementation lab3AppDelegate
 
@@ -16,6 +17,9 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // TODO: attach CarController
+    [OITLogger logFromSender:[self description] message:@"application Did Finish Launching"];
+    OITCarController* car = [[OITCarController alloc] init];
+    [car startUpdateTimer];
 }
 
 @end
