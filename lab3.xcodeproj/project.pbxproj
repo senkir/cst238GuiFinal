@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4E3706C6139757ED00C790F7 /* OITTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3706C5139757ED00C790F7 /* OITTimerManager.m */; };
+		4E69A05C1399FCB100B59104 /* OITVelocityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69A05B1399FCB000B59104 /* OITVelocityModel.m */; };
+		4E69A05F139A00F300B59104 /* OITRPMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69A05E139A00F300B59104 /* OITRPMModel.m */; };
+		4E69A062139A041000B59104 /* OITGearModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69A061139A040F00B59104 /* OITGearModel.m */; };
+		4E69A066139A06F700B59104 /* OITGearBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69A065139A06F600B59104 /* OITGearBox.m */; };
+		4E69A06A139A108A00B59104 /* OITMeterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69A069139A108900B59104 /* OITMeterManager.m */; };
 		4EBA6BCE1395F6CB005074DB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EBA6BCD1395F6CB005074DB /* Cocoa.framework */; };
 		4EBA6BD81395F6CB005074DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EBA6BD61395F6CB005074DB /* InfoPlist.strings */; };
 		4EBA6BDB1395F6CB005074DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6BDA1395F6CB005074DB /* main.m */; };
@@ -36,6 +41,16 @@
 /* Begin PBXFileReference section */
 		4E3706C4139757EC00C790F7 /* OITTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITTimerManager.h; sourceTree = "<group>"; };
 		4E3706C5139757ED00C790F7 /* OITTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITTimerManager.m; sourceTree = "<group>"; };
+		4E69A05A1399FCB000B59104 /* OITVelocityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITVelocityModel.h; sourceTree = "<group>"; };
+		4E69A05B1399FCB000B59104 /* OITVelocityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITVelocityModel.m; sourceTree = "<group>"; };
+		4E69A05D139A00F200B59104 /* OITRPMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITRPMModel.h; sourceTree = "<group>"; };
+		4E69A05E139A00F300B59104 /* OITRPMModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITRPMModel.m; sourceTree = "<group>"; };
+		4E69A060139A040F00B59104 /* OITGearModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITGearModel.h; sourceTree = "<group>"; };
+		4E69A061139A040F00B59104 /* OITGearModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITGearModel.m; sourceTree = "<group>"; };
+		4E69A064139A06F500B59104 /* OITGearBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITGearBox.h; sourceTree = "<group>"; };
+		4E69A065139A06F600B59104 /* OITGearBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITGearBox.m; sourceTree = "<group>"; };
+		4E69A068139A108900B59104 /* OITMeterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITMeterManager.h; sourceTree = "<group>"; };
+		4E69A069139A108900B59104 /* OITMeterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITMeterManager.m; sourceTree = "<group>"; };
 		4EBA6BC91395F6CB005074DB /* lab3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lab3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EBA6BCD1395F6CB005074DB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		4EBA6BD01395F6CB005074DB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -93,6 +108,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E69A0581399FC7D00B59104 /* Gagues */ = {
+			isa = PBXGroup;
+			children = (
+				4EBA6C061396180F005074DB /* AModel.h */,
+				4EBA6C071396180F005074DB /* AModel.m */,
+				4E69A064139A06F500B59104 /* OITGearBox.h */,
+				4E69A065139A06F600B59104 /* OITGearBox.m */,
+				4E69A060139A040F00B59104 /* OITGearModel.h */,
+				4E69A061139A040F00B59104 /* OITGearModel.m */,
+				4E69A05D139A00F200B59104 /* OITRPMModel.h */,
+				4E69A05E139A00F300B59104 /* OITRPMModel.m */,
+				4EBA6C0013960646005074DB /* OITFuelModel.h */,
+				4EBA6C0113960646005074DB /* OITFuelModel.m */,
+				4E69A05A1399FCB000B59104 /* OITVelocityModel.h */,
+				4E69A05B1399FCB000B59104 /* OITVelocityModel.m */,
+			);
+			name = Gagues;
+			sourceTree = "<group>";
+		};
+		4E69A063139A066B00B59104 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				4EBA6C0313960981005074DB /* OITLogger.h */,
+				4EBA6C0413960981005074DB /* OITLogger.m */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
+		4E69A067139A0E3000B59104 /* Digits */ = {
+			isa = PBXGroup;
+			children = (
+				4ED83EA81398BACA00E663C0 /* OITSevenSegmentDigitController.xib */,
+				4EBA6BF113960111005074DB /* OITSevenSegmentDigitController.h */,
+				4EBA6BF013960111005074DB /* OITSevenSegmentDigitController.m */,
+				4EBA6BF513960111005074DB /* OITDigitalNumberSet.h */,
+				4EBA6BF413960111005074DB /* OITDigitalNumberSet.m */,
+			);
+			name = Digits;
+			sourceTree = "<group>";
+		};
 		4EBA6BBE1395F6CB005074DB = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +213,7 @@
 				4EBA6BEC1395F723005074DB /* View */,
 				4EBA6BED1395F72C005074DB /* Controller */,
 				4EBA6BEB1395F70E005074DB /* Model */,
+				4E69A063139A066B00B59104 /* util */,
 				4ED83EA61398B9F800E663C0 /* Clock Files */,
 			);
 			name = Classes;
@@ -166,12 +222,7 @@
 		4EBA6BEB1395F70E005074DB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4EBA6C0013960646005074DB /* OITFuelModel.h */,
-				4EBA6C0113960646005074DB /* OITFuelModel.m */,
-				4EBA6C0313960981005074DB /* OITLogger.h */,
-				4EBA6C0413960981005074DB /* OITLogger.m */,
-				4EBA6C061396180F005074DB /* AModel.h */,
-				4EBA6C071396180F005074DB /* AModel.m */,
+				4E69A0581399FC7D00B59104 /* Gagues */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -192,6 +243,8 @@
 			children = (
 				4EBA6C0913961BE0005074DB /* OITCarController.h */,
 				4EBA6C0A13961BE0005074DB /* OITCarController.m */,
+				4E69A068139A108900B59104 /* OITMeterManager.h */,
+				4E69A069139A108900B59104 /* OITMeterManager.m */,
 				4E3706C4139757EC00C790F7 /* OITTimerManager.h */,
 				4E3706C5139757ED00C790F7 /* OITTimerManager.m */,
 			);
@@ -201,7 +254,7 @@
 		4ED83EA61398B9F800E663C0 /* Clock Files */ = {
 			isa = PBXGroup;
 			children = (
-				4ED83EA81398BACA00E663C0 /* OITSevenSegmentDigitController.xib */,
+				4E69A067139A0E3000B59104 /* Digits */,
 				4ED83EA91398BACA00E663C0 /* OITDigitalClockController.xib */,
 				4ED83EAA1398BACA00E663C0 /* OITClockController.m */,
 				4ED83EAB1398BACA00E663C0 /* OITClockController.h */,
@@ -214,10 +267,6 @@
 				4ED83EB21398BACA00E663C0 /* OITAbstractClockElementController.h */,
 				4EBA6BEF13960111005074DB /* OITTimeModel.h */,
 				4EBA6BEE13960111005074DB /* OITTimeModel.m */,
-				4EBA6BF113960111005074DB /* OITSevenSegmentDigitController.h */,
-				4EBA6BF013960111005074DB /* OITSevenSegmentDigitController.m */,
-				4EBA6BF513960111005074DB /* OITDigitalNumberSet.h */,
-				4EBA6BF413960111005074DB /* OITDigitalNumberSet.m */,
 				4EBA6BF713960111005074DB /* OITDigitalClockController.h */,
 				4EBA6BF613960111005074DB /* OITDigitalClockController.m */,
 			);
@@ -304,6 +353,11 @@
 				4ED83EB61398BACA00E663C0 /* OITClockAnalogHand.m in Sources */,
 				4ED83EB81398BACA00E663C0 /* OITAnalogClockController.m in Sources */,
 				4ED83EB91398BACA00E663C0 /* OITAbstractClockElementController.m in Sources */,
+				4E69A05C1399FCB100B59104 /* OITVelocityModel.m in Sources */,
+				4E69A05F139A00F300B59104 /* OITRPMModel.m in Sources */,
+				4E69A062139A041000B59104 /* OITGearModel.m in Sources */,
+				4E69A066139A06F700B59104 /* OITGearBox.m in Sources */,
+				4E69A06A139A108A00B59104 /* OITMeterManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

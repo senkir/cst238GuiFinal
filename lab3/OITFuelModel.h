@@ -8,16 +8,13 @@
 
 #import "AModel.h"
 
-@protocol FuelModelDelegate <NSObject>
+@protocol FuelModelDelegate <ModelDelegate>
 - (void)fuelIsEmpty:(id)sender;
 @end
 
 @interface OITFuelModel : AModel {
-@private
-    id<FuelModelDelegate> _delegate;
 }
-@property (nonatomic, retain) id<FuelModelDelegate> delegate;
 
 - (void)refill;
-
+- (bool)isEmpty;
 @end

@@ -7,24 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
+@class AModel;
 
+@protocol ModelDelegate 
+- (void)modelDidUpdate:(AModel*)sender;
+@end
 
 @interface AModel : NSObject {
 @protected
     float _value;
     float _maxValue;
+    float _minValue;
     float _delta;
+    id<ModelDelegate> _delegate;
 }
 @property (nonatomic, assign) float value;
 @property (nonatomic, assign) float delta;
+@property (nonatomic, retain) id<ModelDelegate> delegate;
 
 - (void)incrementValueBy:(float) value;
 
-- (void)decrementValueBy:(float) value;
-
 - (void)incrementDeltaBy:(float) delta;
 
-- (void)decrementDeltaBy:(float) delta;
+- (void)update;
 
 /**
  * Returns float value between 0 and 1 representing how full this model object is.

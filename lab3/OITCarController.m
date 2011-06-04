@@ -7,7 +7,10 @@
 //
 
 #import "OITCarController.h"
+#import "OITMeterManager.h"
 
+#import "OITSevenSegmentDigitController.h"
+#import "OITDigitalNumberSet.h"
 
 @implementation OITCarController
 
@@ -15,13 +18,17 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Initialization code here.
+        _meterManager = [[OITMeterManager alloc] init];
     }
     
     return self;
 }
 - (void)dealloc
 {
+
+    [_meterManager release];
+    _meterManager = nil;
+    
     [_thread release];
     _thread = nil;
     
@@ -39,7 +46,17 @@
     //TODO: turn the car on
     
     //TODO:  apply gas
+    [self becomeFirstResponder];
+    [self loadComponents];
     
+}
+
+- (void)loadComponents {
+    [OITLogger logFromSender:[self description] message:@"Load components"];
+    
+//    OITSevenSegmentDigitController *digit1 = [[OITSevenSegmentDigitController alloc] initWithNibName:@"OITSevenSegmentDigitController" bundle:nil];
+//    OITSevenSegmentDigitController *digit2 = [[OITSevenSegmentDigitController alloc] initWithNibName:@"OITSevenSegmentDigitController" bundle:nil];
+//    
 }
 
 - (void)startUpdateTimer {
@@ -51,16 +68,20 @@
 }
 
 
-- (IBAction)gasPedalPressed {
+- (IBAction)gasPedalPressed:(id)sender {
     [OITLogger logFromSender:[self description] message:@"gas pedal pressed"];
+    [_meterManager gasPressed];
+    
 }
 
-- (IBAction)brakePedalPressed {
+- (IBAction)brakePedalPressed:(id)sender {
     [OITLogger logFromSender:[self description] message:@"brake pedal pressed"];
+    [_meterManager brakePressed];
 }
 
 - (void)updateDisplay {
 //    [OITLogger logFromSender:[self description] message:@"display should update!"];
+    [_meterManager updateMeters];
 }
 
 - (void)keyDown:(NSEvent *)theEvent {

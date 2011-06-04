@@ -10,16 +10,23 @@
 #import "OITTimerManager.h"
 #import "OITLogger.h"
 
+
+@class OITMeterManager;
+
 @interface OITCarController : NSViewController <OITTimeManagerDelegate> {
 @private
     OITTimerManager* _timerManager;
+    OITMeterManager* _meterManager;
     NSThread* _thread;
+    
+
 }
 
 - (void)startUpdateTimer;
+- (void)loadComponents;
 
 //UI Interactions
-- (IBAction)gasPedalPressed;
-- (IBAction)brakePedalPressed;
+- (IBAction)gasPedalPressed:(id)sender;
+- (IBAction)brakePedalPressed:(id)sender;
 
 @end

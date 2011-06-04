@@ -11,13 +11,13 @@
 
 @implementation OITFuelModel
 
-@synthesize delegate = _delegate;
-
 - (id)init
 {
     self = [super init];
     if (self) {
+        _minValue = 0.0;
         _maxValue = 13.0; //gallons
+        _value = _maxValue;
     }
     
     return self;
@@ -32,10 +32,16 @@
     _value = _maxValue;
 }
 
-- (void)decrementBy:(float)value {
-    [super decrementValueBy:value];
+- (void)incrementValueBy:(float)value {
+    [super incrementValueBy:value];
     if (_value == 0 && _delegate) {
-        [_delegate fuelIsEmpty:self];
+        if ([(NSObject*)_delegate respondsToSelector:@selector(fuelIsEmpty:)]) {
+            [(id<FuelModelDelegate>)_delegate fuelIsEmpty:self];
+        }
     }
+}
+
+- (bool)isEmpty {
+    return _value > 0 ? true : false;
 }
 @end

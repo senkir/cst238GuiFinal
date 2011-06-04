@@ -13,12 +13,15 @@
 
 @synthesize value = _value;
 @synthesize delta = _delta;
+@synthesize delegate = _delegate;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        // Initialization code here.
+        _minValue = 0;
+        _maxValue = 0;
+        _value = 0;
     }
     
     return self;
@@ -34,23 +37,22 @@
     if (_value > _maxValue) {
         _value = _maxValue;
     }
-}
-
-- (void)decrementValueBy:(float) value {
-    _value -= value;
-    if (_value < 0 ) {
-        _value = 0;
+    if (_value < _minValue ) {
+        _value = _minValue;
     }
 }
 
 - (void)incrementDeltaBy:(float) delta {
-    
+    _delta += delta;
 }
 
-- (void)decrementDeltaBy:(float) delta {
-    
+- (void)update {
+    [self incrementValueBy:_delta];
 }
 
+/**
+ *  For display purposes
+ */
 - (float)percentOfMax {
     return _value / _maxValue;
 }
