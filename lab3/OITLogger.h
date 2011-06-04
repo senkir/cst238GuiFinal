@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-
+/**
+ *  OITLogger is a helper class to automate logging with a sender attribute.
+ */
 @interface OITLogger : NSObject 
 + (void)logFromSender:(NSString*)sender message:(NSString*)message;
 @end

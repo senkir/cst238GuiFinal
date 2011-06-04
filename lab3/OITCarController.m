@@ -30,6 +30,8 @@
 
 
 - (void)loadView {
+    [super loadView];
+    [OITLogger logFromSender:[self description] message:@"loadView"];
     //TODO: intialize Gauges
     
     //TODO: start listeners
@@ -45,18 +47,23 @@
     _timerManager = [[OITTimerManager alloc] init];
     [_timerManager startTimerWithDelegate:self];
     _thread = [[NSThread alloc] initWithTarget:_timerManager selector:@selector(buildThread:) object:self];
+    [self becomeFirstResponder];
 }
 
 
-- (void)gasPedalPressed {
+- (IBAction)gasPedalPressed {
     [OITLogger logFromSender:[self description] message:@"gas pedal pressed"];
 }
 
-- (void)brakePedalPressed {
+- (IBAction)brakePedalPressed {
     [OITLogger logFromSender:[self description] message:@"brake pedal pressed"];
 }
 
 - (void)updateDisplay {
-    [OITLogger logFromSender:[self description] message:@"display should update!"];
+//    [OITLogger logFromSender:[self description] message:@"display should update!"];
+}
+
+- (void)keyDown:(NSEvent *)theEvent {
+    [OITLogger logFromSender:[self description] message:@"key down event occured!"];
 }
 @end

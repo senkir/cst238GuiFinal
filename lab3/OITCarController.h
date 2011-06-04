@@ -19,7 +19,7 @@
 - (void)startUpdateTimer;
 
 //UI Interactions
-- (void)gasPedalPressed;
-- (void)brakePedalPressed;
+- (IBAction)gasPedalPressed;
+- (IBAction)brakePedalPressed;
 
 @end

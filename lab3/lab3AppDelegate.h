@@ -7,10 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "OITCarController.h"
 
 @interface lab3AppDelegate : NSObject <NSApplicationDelegate> {
 @private
     NSWindow *window;
+    IBOutlet NSView *_view;
+    IBOutlet OITCarController *_carController;
 }
 
 @property (assign) IBOutlet NSWindow *window;
