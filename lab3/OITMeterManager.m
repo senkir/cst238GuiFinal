@@ -25,6 +25,7 @@
         [_rpm setDelegate:self];
         _gearBox = [[OITGearBox alloc] init];
         [_gearBox setDelegate:self];
+        [_gearBox setEngine:_rpm];
         _speed = [[OITVelocityModel alloc] init];
         [_speed setDelegate:self];
         _fuel = [[OITFuelModel alloc] init];
@@ -52,17 +53,19 @@
 - (void)updateMeters {
     for (AModel *model in _allMeters) {
         [model update];
-        NSString* modelMessage = [NSString stringWithFormat:@"%@ has a value of %f",[model description] , [model value]];
-        [OITLogger logFromSender:[self description] message:modelMessage];
+        if ([model delta] > 0) {
+            NSString* modelMessage = [NSString stringWithFormat:@"%@ has a value of %f",[model description] , [model value]];
+            [OITLogger logFromSender:[self description] message:modelMessage];
+        }
     }
 }
 
 - (void)gasPressed {
-    [_rpm incrementDeltaBy:300];
+    [_gearBox revUp];
 }
 
 - (void)brakePressed {
-    [_rpm incrementDeltaBy:-500];
+    [_gearBox revDown];
 }
 
 - (void)fuelIsEmpty:(id)sender {

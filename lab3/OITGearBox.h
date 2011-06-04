@@ -8,12 +8,17 @@
 
 #import "AModel.h"
 
+@class OITRPMModel;
 
 @interface OITGearBox : AModel {
 @private
     NSArray         *_gears;
+    OITRPMModel     *_engine;
 }
+@property (nonatomic, retain) OITRPMModel *engine;
+
 - (void)upshift;
 - (void)downshift;
-
+- (void)revUp;
+- (void)revDown;
 @end

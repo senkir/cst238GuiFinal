@@ -8,8 +8,10 @@
 
 #import "OITGearBox.h"
 #import "OITGearModel.h"
+#import "OITRPMModel.h"
 
 @implementation OITGearBox
+@synthesize engine = _engine;
 
 - (id)init
 {
@@ -24,6 +26,9 @@
 }
 
 - (void)dealloc {
+    [_engine release];
+    _engine = nil;
+    
     [super dealloc];
 }
 
@@ -40,5 +45,14 @@
         return [[_gears objectAtIndex:round(_value - 1)] ratio];
     }
     return _value;
+}
+
+- (void)revUp {
+    //TODO: gague this by a factor of the gear we're in
+    [_engine setDelta:100];
+}
+
+- (void)revDown {
+    [_engine setDelta:-100];
 }
 @end

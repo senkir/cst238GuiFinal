@@ -27,4 +27,13 @@
     [super dealloc];
 }
 
+- (void) update {
+    [super update];
+    
+    //delta should change over time
+    if (_delta != 0 ) {
+        _delta *= 0.6;
+    }
+}
+
 @end

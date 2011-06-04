@@ -7,7 +7,6 @@
 //
 
 #import "AModel.h"
-
 @interface OITRPMModel : AModel {
 @private
     

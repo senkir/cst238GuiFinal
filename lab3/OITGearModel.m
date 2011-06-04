@@ -44,4 +44,5 @@
 - (float)ratio {
     return _ratio;
 }
+
 @end
