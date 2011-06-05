@@ -38,4 +38,5 @@
 - (void)updateMeters;
 - (void)gasPressed;
 - (void)brakePressed;
+- (OITGearBox*)gearBox;
 @end

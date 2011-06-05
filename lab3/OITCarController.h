@@ -10,6 +10,7 @@
 #import "OITTimerManager.h"
 #import "OITLogger.h"
 
+#import "OITDigitalReadoutController.h"
 
 @class OITMeterManager;
 
@@ -19,7 +20,12 @@
     OITMeterManager* _meterManager;
     NSThread* _thread;
     
-
+    IBOutlet NSButton *_carOnButton;
+    IBOutlet NSButton   *_lightsButton;
+    bool _isOn;
+    bool _lightsOn;
+    
+    OITDigitalReadoutController*     _digitalReadout1;
 }
 
 - (void)startUpdateTimer;
@@ -28,5 +34,8 @@
 //UI Interactions
 - (IBAction)gasPedalPressed:(id)sender;
 - (IBAction)brakePedalPressed:(id)sender;
-
+- (IBAction)shiftUp:(id)sender;
+- (IBAction)shiftDown:(id)sender;
+- (IBAction)toggleCarOn:(id)sender;
+- (IBAction)toggleLights:(id)sender;
 @end

@@ -15,8 +15,8 @@
 {
     self = [super init];
     if (self) {
-        _minValue = -30.0; //mph
-        _maxValue = 120;
+        _minValue = -30.0f; //mph
+        _maxValue = 120.0f;
     }
     
     return self;
@@ -27,4 +27,18 @@
     [super dealloc];
 }
 
+- (void) update {
+    [super update];
+    
+    //delta should change over time
+    if (_delta != 0 ) {
+        _delta *= 0.6f;
+    }
+}
+
+- (void) setValue:(float)value {
+    if (_value != value) {
+        _value = value;
+    }
+}
 @end

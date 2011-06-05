@@ -21,13 +21,17 @@
 {
     self = [super init];
     if (self) {
-        _rpm = [[OITRPMModel alloc] init];
-        [_rpm setDelegate:self];
         _gearBox = [[OITGearBox alloc] init];
         [_gearBox setDelegate:self];
+        
+        _rpm = [[OITRPMModel alloc] init];
+        [_rpm setDelegate:self];
         [_gearBox setEngine:_rpm];
+        
         _speed = [[OITVelocityModel alloc] init];
         [_speed setDelegate:self];
+        [_gearBox setSpeed:_speed];
+
         _fuel = [[OITFuelModel alloc] init];
         [_fuel setDelegate:self];
         
@@ -53,10 +57,10 @@
 - (void)updateMeters {
     for (AModel *model in _allMeters) {
         [model update];
-        if ([model delta] > 0) {
+//        if ([model delta] > 0) {
             NSString* modelMessage = [NSString stringWithFormat:@"%@ has a value of %f",[model description] , [model value]];
             [OITLogger logFromSender:[self description] message:modelMessage];
-        }
+//        }
     }
 }
 
@@ -72,8 +76,22 @@
     
 }
 
+- (float)fuelConsumptionRate {
+    float rate = [_gearBox efficiencyForEngine];
+    if (rate != 0 ) {
+        NSString* message = [NSString stringWithFormat:@"rate is %f", rate];
+        [OITLogger logFromSender:[self description] message:message];
+    }
+    return rate;
+}
+
 - (void)modelDidUpdate:(AModel*)sender {
     
 }
+
+- (OITGearBox*)gearBox {
+    return _gearBox;
+}
+
 
 @end

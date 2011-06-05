@@ -9,7 +9,8 @@
 #import "AModel.h"
 @interface OITRPMModel : AModel {
 @private
-    
+
 }
 
+- (float)maxValue;
 @end

@@ -17,6 +17,7 @@
     if (self) {
         _minValue = 0;
         _maxValue = 8000; //values read are 1/1000 this
+
     }
     
     return self;
@@ -34,6 +35,10 @@
     if (_delta != 0 ) {
         _delta *= 0.6;
     }
+}
+
+- (float)maxValue {
+    return _maxValue;
 }
 
 @end

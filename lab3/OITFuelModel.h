@@ -10,9 +10,11 @@
 
 @protocol FuelModelDelegate <ModelDelegate>
 - (void)fuelIsEmpty:(id)sender;
+- (float)fuelConsumptionRate;
 @end
 
 @interface OITFuelModel : AModel {
+    float   _efficiency;
 }
 
 - (void)refill;

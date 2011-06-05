@@ -44,4 +44,11 @@
 - (bool)isEmpty {
     return _value > 0 ? true : false;
 }
+
+- (void)update {
+    [super update];
+    if ([(NSObject*)_delegate respondsToSelector:@selector(fuelConsumptionRate)]) {
+        [self setDelta:-[(id<FuelModelDelegate>)_delegate fuelConsumptionRate]];
+    }
+}
 @end

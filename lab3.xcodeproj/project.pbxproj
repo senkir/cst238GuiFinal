@@ -13,6 +13,8 @@
 		4E69A062139A041000B59104 /* OITGearModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69A061139A040F00B59104 /* OITGearModel.m */; };
 		4E69A066139A06F700B59104 /* OITGearBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69A065139A06F600B59104 /* OITGearBox.m */; };
 		4E69A06A139A108A00B59104 /* OITMeterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69A069139A108900B59104 /* OITMeterManager.m */; };
+		4E69A06C139B515C00B59104 /* OITDigitalReadout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E69A06B139B515C00B59104 /* OITDigitalReadout.xib */; };
+		4E69A070139B52F300B59104 /* OITDigitalReadoutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69A06E139B52F100B59104 /* OITDigitalReadoutController.m */; };
 		4EBA6BCE1395F6CB005074DB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EBA6BCD1395F6CB005074DB /* Cocoa.framework */; };
 		4EBA6BD81395F6CB005074DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EBA6BD61395F6CB005074DB /* InfoPlist.strings */; };
 		4EBA6BDB1395F6CB005074DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA6BDA1395F6CB005074DB /* main.m */; };
@@ -51,6 +53,9 @@
 		4E69A065139A06F600B59104 /* OITGearBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITGearBox.m; sourceTree = "<group>"; };
 		4E69A068139A108900B59104 /* OITMeterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITMeterManager.h; sourceTree = "<group>"; };
 		4E69A069139A108900B59104 /* OITMeterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITMeterManager.m; sourceTree = "<group>"; };
+		4E69A06B139B515C00B59104 /* OITDigitalReadout.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OITDigitalReadout.xib; sourceTree = "<group>"; };
+		4E69A06D139B52F000B59104 /* OITDigitalReadoutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITDigitalReadoutController.h; sourceTree = "<group>"; };
+		4E69A06E139B52F100B59104 /* OITDigitalReadoutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITDigitalReadoutController.m; sourceTree = "<group>"; };
 		4EBA6BC91395F6CB005074DB /* lab3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lab3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EBA6BCD1395F6CB005074DB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		4EBA6BD01395F6CB005074DB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -139,13 +144,21 @@
 		4E69A067139A0E3000B59104 /* Digits */ = {
 			isa = PBXGroup;
 			children = (
-				4ED83EA81398BACA00E663C0 /* OITSevenSegmentDigitController.xib */,
-				4EBA6BF113960111005074DB /* OITSevenSegmentDigitController.h */,
-				4EBA6BF013960111005074DB /* OITSevenSegmentDigitController.m */,
 				4EBA6BF513960111005074DB /* OITDigitalNumberSet.h */,
 				4EBA6BF413960111005074DB /* OITDigitalNumberSet.m */,
 			);
 			name = Digits;
+			sourceTree = "<group>";
+		};
+		4E69A072139B55C400B59104 /* Digital */ = {
+			isa = PBXGroup;
+			children = (
+				4E69A06D139B52F000B59104 /* OITDigitalReadoutController.h */,
+				4E69A06E139B52F100B59104 /* OITDigitalReadoutController.m */,
+				4EBA6BF113960111005074DB /* OITSevenSegmentDigitController.h */,
+				4EBA6BF013960111005074DB /* OITSevenSegmentDigitController.m */,
+			);
+			name = Digital;
 			sourceTree = "<group>";
 		};
 		4EBA6BBE1395F6CB005074DB = {
@@ -233,6 +246,8 @@
 				4EBA6BF313960111005074DB /* OITImageView.h */,
 				4EBA6BF213960111005074DB /* OITImageView.m */,
 				4EBA6BE21395F6CB005074DB /* MainMenu.xib */,
+				4E69A06B139B515C00B59104 /* OITDigitalReadout.xib */,
+				4ED83EA81398BACA00E663C0 /* OITSevenSegmentDigitController.xib */,
 				4EBA6C0B13961BE0005074DB /* OITCarController.xib */,
 			);
 			name = View;
@@ -241,6 +256,7 @@
 		4EBA6BED1395F72C005074DB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4E69A072139B55C400B59104 /* Digital */,
 				4EBA6C0913961BE0005074DB /* OITCarController.h */,
 				4EBA6C0A13961BE0005074DB /* OITCarController.m */,
 				4E69A068139A108900B59104 /* OITMeterManager.h */,
@@ -327,6 +343,7 @@
 				4ED83EB31398BACA00E663C0 /* OITSevenSegmentDigitController.xib in Resources */,
 				4ED83EB41398BACA00E663C0 /* OITDigitalClockController.xib in Resources */,
 				4ED83EB71398BACA00E663C0 /* OITAnalogClockController.xib in Resources */,
+				4E69A06C139B515C00B59104 /* OITDigitalReadout.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +375,7 @@
 				4E69A062139A041000B59104 /* OITGearModel.m in Sources */,
 				4E69A066139A06F700B59104 /* OITGearBox.m in Sources */,
 				4E69A06A139A108A00B59104 /* OITMeterManager.m in Sources */,
+				4E69A070139B52F300B59104 /* OITDigitalReadoutController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
