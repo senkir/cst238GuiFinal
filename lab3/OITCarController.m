@@ -15,6 +15,7 @@
 
 #import "OITRPMModel.h"
 #import "OITVelocityModel.h"
+#import "OITOilModel.h"
 
 #define kYbuffer        10.0
 #define kXbuffer        20.0

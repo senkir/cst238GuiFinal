@@ -14,6 +14,7 @@
 @class OITVelocityModel;
 @class OITRPMModel;
 @class OITGearBox;
+@class OITOilModel;
 
 @protocol OITMeterManagerDelegate <NSObject>
 
@@ -27,6 +28,7 @@
     OITVelocityModel    *_speed;
     OITRPMModel         *_rpm;
     OITGearBox          *_gearBox;
+    OITOilModel         *_oil;
     NSArray             *_allMeters;
     /*
      gear

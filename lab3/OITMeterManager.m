@@ -12,6 +12,7 @@
 #import "OITFuelModel.h"
 #import "OITVelocityModel.h"
 #import "OITGearBox.h"
+#import "OITOilModel.h"
 
 #import "OITLogger.h"
 

@@ -39,6 +39,7 @@
 		4ED83EB81398BACA00E663C0 /* OITAnalogClockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED83EAF1398BACA00E663C0 /* OITAnalogClockController.m */; };
 		4ED83EB91398BACA00E663C0 /* OITAbstractClockElementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED83EB11398BACA00E663C0 /* OITAbstractClockElementController.m */; };
 		4EE19729139BF07C00A34BD4 /* OITStyledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE19728139BF07C00A34BD4 /* OITStyledView.m */; };
+		4EE1972D139C10A700A34BD4 /* OITOilModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE1972C139C10A600A34BD4 /* OITOilModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,8 @@
 		4ED83EB21398BACA00E663C0 /* OITAbstractClockElementController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITAbstractClockElementController.h; sourceTree = "<group>"; };
 		4EE19727139BF07B00A34BD4 /* OITStyledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITStyledView.h; sourceTree = "<group>"; };
 		4EE19728139BF07C00A34BD4 /* OITStyledView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITStyledView.m; sourceTree = "<group>"; };
+		4EE1972B139C10A600A34BD4 /* OITOilModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITOilModel.h; sourceTree = "<group>"; };
+		4EE1972C139C10A600A34BD4 /* OITOilModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITOilModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,8 @@
 				4EBA6C0113960646005074DB /* OITFuelModel.m */,
 				4E69A05A1399FCB000B59104 /* OITVelocityModel.h */,
 				4E69A05B1399FCB000B59104 /* OITVelocityModel.m */,
+				4EE1972B139C10A600A34BD4 /* OITOilModel.h */,
+				4EE1972C139C10A600A34BD4 /* OITOilModel.m */,
 			);
 			name = Gagues;
 			sourceTree = "<group>";
@@ -382,6 +387,7 @@
 				4E69A06A139A108A00B59104 /* OITMeterManager.m in Sources */,
 				4E69A070139B52F300B59104 /* OITDigitalReadoutController.m in Sources */,
 				4EE19729139BF07C00A34BD4 /* OITStyledView.m in Sources */,
+				4EE1972D139C10A700A34BD4 /* OITOilModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
