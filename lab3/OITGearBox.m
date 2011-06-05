@@ -15,6 +15,8 @@
 #define kWheelDiameterCoefficient       250
 #define kRPMIncreasePerButtonPress      500.0f
 #define kRPMDecreasePerButtonPress      -700.0f
+#define KRPMDeltaForUpshift             -3000.0f
+#define kRPMDeltaForDownshift           3000.0f
 
 @implementation OITGearBox
 @synthesize engine = _engine;
@@ -50,6 +52,8 @@
 
 - (void)upshift {
     [self incrementValueBy:1.0];
+    [_engine setDelta:KRPMDeltaForUpshift];
+    [_speed setDelta:10];
 }
 
 - (void)downshift {
@@ -84,6 +88,7 @@
     NSString* logStatement = [NSString stringWithFormat:@"%f * %f = %f", [_engine value] / kWheelDiameterCoefficient , [self ratioForGear], newSpeed];
     [OITLogger logFromSender:[self description] message:logStatement];
     [_speed setValue:newSpeed];
+    [super update];
 }
 
 @end

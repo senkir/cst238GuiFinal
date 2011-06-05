@@ -13,6 +13,7 @@
 #import "OITDigitalReadoutController.h"
 
 #import "OITMeterManager.h"
+#import "OITStyledView.h"
 
 @interface OITCarController : NSViewController <OITTimeManagerDelegate, OITMeterManagerDelegate> {
 @private
@@ -22,6 +23,8 @@
     
     IBOutlet NSButton *_carOnButton;
     IBOutlet NSButton   *_lightsButton;
+    IBOutlet OITStyledView *_engineIndicatorView;
+    IBOutlet OITStyledView *_lightIndicatorView;
     bool _isOn;
     bool _lightsOn;
     

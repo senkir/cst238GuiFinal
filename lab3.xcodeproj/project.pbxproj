@@ -38,6 +38,7 @@
 		4ED83EB71398BACA00E663C0 /* OITAnalogClockController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ED83EAE1398BACA00E663C0 /* OITAnalogClockController.xib */; };
 		4ED83EB81398BACA00E663C0 /* OITAnalogClockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED83EAF1398BACA00E663C0 /* OITAnalogClockController.m */; };
 		4ED83EB91398BACA00E663C0 /* OITAbstractClockElementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED83EB11398BACA00E663C0 /* OITAbstractClockElementController.m */; };
+		4EE19729139BF07C00A34BD4 /* OITStyledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE19728139BF07C00A34BD4 /* OITStyledView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,8 @@
 		4ED83EB01398BACA00E663C0 /* OITAnalogClockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITAnalogClockController.h; sourceTree = "<group>"; };
 		4ED83EB11398BACA00E663C0 /* OITAbstractClockElementController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITAbstractClockElementController.m; sourceTree = "<group>"; };
 		4ED83EB21398BACA00E663C0 /* OITAbstractClockElementController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITAbstractClockElementController.h; sourceTree = "<group>"; };
+		4EE19727139BF07B00A34BD4 /* OITStyledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITStyledView.h; sourceTree = "<group>"; };
+		4EE19728139BF07C00A34BD4 /* OITStyledView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITStyledView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +247,8 @@
 			isa = PBXGroup;
 			children = (
 				4EBA6BF313960111005074DB /* OITImageView.h */,
+				4EE19727139BF07B00A34BD4 /* OITStyledView.h */,
+				4EE19728139BF07C00A34BD4 /* OITStyledView.m */,
 				4EBA6BF213960111005074DB /* OITImageView.m */,
 				4EBA6BE21395F6CB005074DB /* MainMenu.xib */,
 				4E69A06B139B515C00B59104 /* OITDigitalReadout.xib */,
@@ -376,6 +381,7 @@
 				4E69A066139A06F700B59104 /* OITGearBox.m in Sources */,
 				4E69A06A139A108A00B59104 /* OITMeterManager.m in Sources */,
 				4E69A070139B52F300B59104 /* OITDigitalReadoutController.m in Sources */,
+				4EE19729139BF07C00A34BD4 /* OITStyledView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

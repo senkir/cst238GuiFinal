@@ -73,22 +73,29 @@
     
     _fuel = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:3];
     [_fuel loadView];
-    [_fuel setTitle:@"Speed"];
+    [_fuel setTitle:@"Fuel"];
     [self.view addSubview:[_fuel view]];
+    
+    _gear = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:1];
+    [_gear loadView];
+    [_gear setTitle:@"Gear"];
+    [self.view addSubview:[_gear view]];
     
     NSDictionary *gagueDictionary = [[NSMutableDictionary alloc] init];
     [gagueDictionary setValue:_rpm forKey:@"RPM"];
     [gagueDictionary setValue:_speed forKey:@"Speed"];
     [gagueDictionary setValue:_fuel forKey:@"Fuel"];
+    [gagueDictionary setValue:_gear forKey:@"Gear"];
     
     NSArray* allControllers = [gagueDictionary allValues];
+    NSUInteger xOffset = 0;
     for (int i = 0; i < [allControllers count]; i++) {
         NSViewController* controller = [allControllers objectAtIndex:i];
-        [[controller view] setFrame:NSMakeRect((controller.view.frame.size.width + kXbuffer ) * i,  
+        [[controller view] setFrame:NSMakeRect(xOffset,  
                                                self.view.frame.size.height - controller.view.frame.size.height - kYbuffer, //window height - contrller height
                                                controller.view.frame.size.width, 
                                                controller.view.frame.size.height)];
-
+        xOffset += controller.view.frame.size.width + kXbuffer;
     }
     
 //    [[_speed view] setFrame:NSMakeRect(_speed.view.frame.size.width + _speed.view.frame.origin.x, self.view.frame.size.height - _speed.view.frame.size.height - kYbuffer, _speed.view.frame.size.width, _speed.view.frame.size.height)];
@@ -105,8 +112,9 @@
 
 - (IBAction)gasPedalPressed:(id)sender {
     [OITLogger logFromSender:[self description] message:@"gas pedal pressed"];
-    [_meterManager gasPressed];
-    
+    if (_isOn) {
+            [_meterManager gasPressed];
+    }
 }
 
 - (IBAction)brakePedalPressed:(id)sender {
@@ -134,18 +142,22 @@
     if (_isOn) {
         _isOn = false;
         [_carOnButton setTitle:@"Turn On"];
+        [_engineIndicatorView setBackgroundColor:[NSColor whiteColor]];
     } else {
         _isOn = true;
         [_carOnButton setTitle:@"Turn Off"];
+        [_engineIndicatorView setBackgroundColor:[NSColor redColor]];
     }
 }
 - (IBAction)toggleLights:(id)sender {
     if (_lightsOn) {
         _lightsOn = false;
         [_lightsButton setTitle:@"Lights On"];
+        [_lightIndicatorView setBackgroundColor:[NSColor yellowColor]];
     } else {
         _lightsOn = true;
         [_lightsButton setTitle:@"Lights Off"];
+        [_lightIndicatorView setBackgroundColor:[NSColor whiteColor]];
     }}
 
 -(void)modelDidUpdate:(AModel*)model {
@@ -155,7 +167,10 @@
         [_speed setValue:[model value]];
     } else if ([model isKindOfClass:[OITFuelModel class]]) {
         [_fuel setValue:[model value]];
+    } else if ([model isKindOfClass:[OITGearBox class]]) {
+        [_gear setValue:[model value]];
     }
+
 }
 
 @end
