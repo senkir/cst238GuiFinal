@@ -17,7 +17,7 @@
 #define kRPMDecreasePerButtonPress      -700.0f
 #define KRPMDeltaForUpshift             -3000.0f
 #define kRPMDeltaForDownshift           3000.0f
-
+#define kRPMEfficiencyCoefficient       500
 @implementation OITGearBox
 @synthesize engine = _engine;
 @synthesize speed = _speed;
@@ -70,8 +70,13 @@
 - (float)efficiencyForEngine {
     float ratio = [self ratioForGear];
     float rpm = [_engine value];
-    float result = [_engine value] > 0 ? _baseEfficiency * ratio / (rpm / [_engine maxValue] ) : 0; //this isn't quite right
-    return result;
+    float toReturn = 0;
+    if ([_engine value] > 0 ) {
+        
+        //this calculation is gibberish
+        toReturn = _baseEfficiency * ratio / (rpm / kRPMEfficiencyCoefficient);
+    }
+    return toReturn;
 }
 
 - (void)revUp {

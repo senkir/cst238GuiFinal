@@ -15,6 +15,8 @@
 
 #import "OITLogger.h"
 
+#define kRPMDeltaForNoFuel  -5000
+
 @implementation OITMeterManager
 
 @synthesize delegate = _delegate;
@@ -75,11 +77,17 @@
 }
 
 - (void)fuelIsEmpty:(id)sender {
-    
+    [OITLogger logFromSender:[self description] message:@"Fuel is Empty!"];
+    [_rpm setDelta:kRPMDeltaForNoFuel];
 }
 
 - (float)fuelConsumptionRate {
-    float rate = [_gearBox efficiencyForEngine];
+    float rate = 0;
+    if ([_speed value] > 0) {
+        rate = [_gearBox efficiencyForEngine] / 600;
+    } else {
+        rate = [_gearBox efficiencyForEngine] / 600;
+    }
     if (rate != 0 ) {
         NSString* message = [NSString stringWithFormat:@"rate is %f", rate];
         [OITLogger logFromSender:[self description] message:message];
