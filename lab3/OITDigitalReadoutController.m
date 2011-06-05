@@ -8,7 +8,7 @@
 
 #import "OITDigitalReadoutController.h"
 
-#define kXbuffer  5.0f
+#define kXbuffer  2.0f
 
 @implementation OITDigitalReadoutController
 
@@ -60,13 +60,16 @@
     float width = 0;
     for (int i = 0 ; i < digitCount ; i++) {
         OITSevenSegmentDigitController *digitController = [_digitControllerArray objectAtIndex:i];
-        width = digitController.view.frame.size.width;
-        height = height > 0 ? height : digitController.view.frame.size.height;
-        offsetX = width * i + kXbuffer;
-        [self.view setFrame:NSMakeRect(0, 0, offsetX, height)];
+        if (height == 0 || width == 0 ) {
+            width = digitController.view.frame.size.width;
+            height = height > 0 ? height : digitController.view.frame.size.height;
+        }
+
+        offsetX = (width + kXbuffer ) * i;
+        [digitController.view setFrame:NSMakeRect(offsetX, height / 2, width, height)];
     }
-//    [self.view setFrame:NSMakeRect(0, 0, (width + kXbuffer) * digitCount, height)];
-    [self.view setFrame:NSMakeRect(0, 0, 600, 300)];
+    [self.view setFrame:NSMakeRect(0, height, (width + kXbuffer) * digitCount, height)];
+//    [self.view setFrame:NSMakeRect(0, 0, 1200, 300)];
 }
 
 - (void)setupControllerArray {

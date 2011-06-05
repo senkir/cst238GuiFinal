@@ -59,7 +59,7 @@
 //    OITSevenSegmentDigitController *digit1 = [[OITSevenSegmentDigitController alloc] initWithNibName:@"OITSevenSegmentDigitController" bundle:nil];
 //    OITSevenSegmentDigitController *digit2 = [[OITSevenSegmentDigitController alloc] initWithNibName:@"OITSevenSegmentDigitController" bundle:nil];
 //    
-//    [[_digitalReadout1 view] setFrame:NSMakeRect(0, 0, 200, 200)];
+    [[_digitalReadout1 view] setFrame:NSMakeRect(0, 100, _digitalReadout1.view.frame.size.width, _digitalReadout1.view.frame.size.height)];
 //    [[_digitalReadout1 view] setNeedsDisplay:true];
 //    [self.view setNeedsDisplay:true];
 }
