@@ -15,7 +15,7 @@
 @synthesize value = _value;
 @synthesize maxValue = _maxValue;
 @synthesize delegate = _delegate;
-//@synthesize view = _view;
+@synthesize label = _label;
 
 //- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 //{
@@ -86,23 +86,46 @@
     _digitControllerArray = controllers;
     
 }
+- (void)setTitle:(NSString *)title {
+//    [super setTitle:title];
+    [_label setTitleWithMnemonic:title];
+}
+
 - (void)setValue:(NSUInteger)value {
     if ( value != _value ) {
         _value = value % _maxValue;
-        NSUInteger tensDigit = round(_value / 10);
-        [(OITSevenSegmentDigitController*)[_digitControllerArray objectAtIndex:0] setValue:tensDigit];
-        NSUInteger onesDigit = _value % 10;
-        [(OITSevenSegmentDigitController*)[_digitControllerArray objectAtIndex:1] setValue:onesDigit];
+        
+        //set the digits right - to - left
+        NSUInteger interimValue = value;
+        for (NSUInteger i = _numberOfDigits; i >= 1 ; i--) {
+            NSUInteger thisDigit = interimValue % 10;
+            [(OITSevenSegmentDigitController*)[_digitControllerArray objectAtIndex:i - 1] setValue:thisDigit];
+            interimValue /= 10;
+        }
+        
+//        NSUInteger tensDigit = round(_value / 10);
+//        [(OITSevenSegmentDigitController*)[_digitControllerArray objectAtIndex:0] setValue:tensDigit];
+//        NSUInteger onesDigit = _value % 10;
+//        [(OITSevenSegmentDigitController*)[_digitControllerArray objectAtIndex:1] setValue:onesDigit];
     }
 }
 
 - (void)setMaxValue:(NSUInteger)maxValue {
     if ( maxValue != _maxValue ) {
         _maxValue = maxValue;
-        NSUInteger tensDigit = round (maxValue / 10);
-        [(OITSevenSegmentDigitController*)[_digitControllerArray objectAtIndex:0] setMaxValue:tensDigit];
-        NSUInteger onesDigit = maxValue % 10;
-        [(OITSevenSegmentDigitController*)[_digitControllerArray objectAtIndex:1] setMaxValue:onesDigit];
+        
+        //set the digits right - to - left
+        NSUInteger interimValue = maxValue;
+        for (NSUInteger i = _numberOfDigits; i >= 1 ; i--) {
+            NSUInteger thisDigit = interimValue % 10;
+            [(OITSevenSegmentDigitController*)[_digitControllerArray objectAtIndex:i - 1] setMaxValue:thisDigit];
+            interimValue /= 10;
+        }
+        
+//        NSUInteger tensDigit = round (maxValue / 10);
+//        [(OITSevenSegmentDigitController*)[_digitControllerArray objectAtIndex:0] setMaxValue:tensDigit];
+//        NSUInteger onesDigit = maxValue % 10;
+//        [(OITSevenSegmentDigitController*)[_digitControllerArray objectAtIndex:1] setMaxValue:onesDigit];
     }
 }
 

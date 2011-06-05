@@ -17,6 +17,8 @@
 
 @implementation OITMeterManager
 
+@synthesize delegate = _delegate;
+
 - (id)init
 {
     self = [super init];
@@ -86,7 +88,7 @@
 }
 
 - (void)modelDidUpdate:(AModel*)sender {
-    
+    [_delegate modelDidUpdate:sender];
 }
 
 - (OITGearBox*)gearBox {

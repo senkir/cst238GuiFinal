@@ -12,9 +12,9 @@
 
 #import "OITDigitalReadoutController.h"
 
-@class OITMeterManager;
+#import "OITMeterManager.h"
 
-@interface OITCarController : NSViewController <OITTimeManagerDelegate> {
+@interface OITCarController : NSViewController <OITTimeManagerDelegate, OITMeterManagerDelegate> {
 @private
     OITTimerManager* _timerManager;
     OITMeterManager* _meterManager;
@@ -25,7 +25,10 @@
     bool _isOn;
     bool _lightsOn;
     
-    OITDigitalReadoutController*     _digitalReadout1;
+    OITDigitalReadoutController*     _rpm;
+    OITDigitalReadoutController*    _speed;
+    OITDigitalReadoutController*    _gear;
+    OITDigitalReadoutController*    _fuel;
 }
 
 - (void)startUpdateTimer;

@@ -48,6 +48,7 @@
 
 - (void)update {
     [self incrementValueBy:_delta];
+    [_delegate modelDidUpdate:self];
 }
 
 /**

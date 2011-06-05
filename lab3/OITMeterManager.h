@@ -15,6 +15,12 @@
 @class OITRPMModel;
 @class OITGearBox;
 
+@protocol OITMeterManagerDelegate <NSObject>
+
+-(void)modelDidUpdate:(AModel*)model;
+
+@end
+
 @interface OITMeterManager : NSObject <FuelModelDelegate> {
 @private
     OITFuelModel        *_fuel;
@@ -34,7 +40,11 @@
      odometer
      trip
      */
+    
+    id<OITMeterManagerDelegate> _delegate;
 }
+
+@property (nonatomic, retain) id<OITMeterManagerDelegate> delegate;
 - (void)updateMeters;
 - (void)gasPressed;
 - (void)brakePressed;

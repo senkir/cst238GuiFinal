@@ -13,6 +13,11 @@
 #import "OITSevenSegmentDigitController.h"
 #import "OITDigitalNumberSet.h"
 
+#import "OITRPMModel.h"
+#import "OITVelocityModel.h"
+
+#define kYbuffer        10.0
+
 @implementation OITCarController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -20,6 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _meterManager = [[OITMeterManager alloc] init];
+        [_meterManager setDelegate:self];
     }
     
     return self;
@@ -54,14 +60,18 @@
 
 - (void)loadComponents {
     [OITLogger logFromSender:[self description] message:@"Load components"];
-    _digitalReadout1 = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:3];
-    [self.view addSubview:[_digitalReadout1 view]];
-//    OITSevenSegmentDigitController *digit1 = [[OITSevenSegmentDigitController alloc] initWithNibName:@"OITSevenSegmentDigitController" bundle:nil];
-//    OITSevenSegmentDigitController *digit2 = [[OITSevenSegmentDigitController alloc] initWithNibName:@"OITSevenSegmentDigitController" bundle:nil];
-//    
-    [[_digitalReadout1 view] setFrame:NSMakeRect(0, 100, _digitalReadout1.view.frame.size.width, _digitalReadout1.view.frame.size.height)];
-//    [[_digitalReadout1 view] setNeedsDisplay:true];
-//    [self.view setNeedsDisplay:true];
+    //RPM
+    _rpm = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:3];
+    [_rpm loadView];
+    [_rpm setTitle:@"RPM"];
+    [self.view addSubview:[_rpm view]];    
+    [[_rpm view] setFrame:NSMakeRect(0, self.view.frame.size.height - _rpm.view.frame.size.height - kYbuffer, _rpm.view.frame.size.width, _rpm.view.frame.size.height)];
+    
+//    _speed = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:3];
+//    [_speed setTitle:@"Speed"];
+//    [self.view addSubview:[_speed view]];
+//    [[_rpm view] setFrame:NSMakeRect(_rpm.view.frame.size.width + _rpm.view.frame.origin.x, self.view.frame.size.height - _rpm.view.frame.size.height - kYbuffer, _speed.view.frame.size.width, _speed.view.frame.size.height)];
+
 }
 
 - (void)startUpdateTimer {
@@ -69,7 +79,6 @@
     _timerManager = [[OITTimerManager alloc] init];
     [_timerManager startTimerWithDelegate:self];
     _thread = [[NSThread alloc] initWithTarget:_timerManager selector:@selector(buildThread:) object:self];
-    [self becomeFirstResponder];
 }
 
 
@@ -117,4 +126,13 @@
         _lightsOn = true;
         [_lightsButton setTitle:@"Lights Off"];
     }}
+
+-(void)modelDidUpdate:(AModel*)model {
+    if ([model isKindOfClass:[OITRPMModel class]]) {
+        [_rpm setValue:[model value]/100];
+    } else if ([model isKindOfClass:[OITVelocityModel class]]) {
+        [_speed setValue:[model value]];
+    }
+}
+
 @end

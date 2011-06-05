@@ -11,7 +11,7 @@
 
 @interface OITDigitalReadoutController : NSViewController <OITSevenSegmentDigitDelegate>{
 @private
-//    IBOutlet NSView*     _view;
+    IBOutlet NSTextField *_label;
     NSUInteger _numberOfDigits;
     NSUInteger _value;
     NSUInteger _maxValue;
@@ -21,10 +21,9 @@
 @property (nonatomic, assign) NSUInteger value;
 @property (nonatomic, assign) NSUInteger maxValue;
 @property (nonatomic, retain) id<OITSevenSegmentDigitDelegate> delegate;
-//@property (nonatomic, retain) NSView *view;
+@property (nonatomic, retain) NSTextField *label;
 
 - (id)initWithNumberOfDigits:(int)digits;
 - (void)setupControllerArray;
 - (void)incrementDigit;
-
 @end
