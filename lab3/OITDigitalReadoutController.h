@@ -13,17 +13,20 @@
 @private
     IBOutlet NSTextField *_label;
     NSUInteger _numberOfDigits;
-    NSUInteger _value;
-    NSUInteger _maxValue;
+    NSInteger _decimalPlacement;
+    float _value;
+    float _maxValue;
     NSArray* _digitControllerArray;
     id<OITSevenSegmentDigitDelegate> _delegate;
 }
-@property (nonatomic, assign) NSUInteger value;
-@property (nonatomic, assign) NSUInteger maxValue;
+@property (nonatomic, assign) float value;
+@property (nonatomic, assign) float maxValue;
 @property (nonatomic, retain) id<OITSevenSegmentDigitDelegate> delegate;
 @property (nonatomic, retain) NSTextField *label;
+@property (nonatomic, assign) NSInteger decimalPlacement;
 
 - (id)initWithNumberOfDigits:(int)digits;
+- (id)initWithNumberOfDigits:(int)digits AndDecimalPlaceAfterDigit:(int)decimalPlacing;
 - (void)setupControllerArray;
 - (void)incrementDigit;
 @end

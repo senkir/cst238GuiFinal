@@ -26,6 +26,8 @@
     if (self) {
         _meterManager = [[OITMeterManager alloc] init];
         [_meterManager setDelegate:self];
+        _isOn = FALSE;
+        _lightsOn = FALSE;
     }
     
     return self;
@@ -60,18 +62,20 @@
 
 - (void)loadComponents {
     [OITLogger logFromSender:[self description] message:@"Load components"];
+    [_engineIndicatorView setBackgroundColor:[NSColor redColor]];
+    [_lightIndicatorView setBackgroundColor:[NSColor grayColor]];
     //RPM
-    _rpm = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:3];
+    _rpm = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:3 AndDecimalPlaceAfterDigit:1];
     [_rpm loadView];
     [_rpm setTitle:@"RPM"];
-    [self.view addSubview:[_rpm view]];    
+    [self.view addSubview:[_rpm view]]; 
 
-    _speed = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:3];
+    _speed = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:3 AndDecimalPlaceAfterDigit:2];
     [_speed loadView];
     [_speed setTitle:@"Speed"];
     [self.view addSubview:[_speed view]];
     
-    _fuel = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:3];
+    _fuel = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:3 AndDecimalPlaceAfterDigit:2];
     [_fuel loadView];
     [_fuel setTitle:@"Fuel"];
     [self.view addSubview:[_fuel view]];
@@ -125,6 +129,9 @@
 - (void)updateDisplay {
 //    [OITLogger logFromSender:[self description] message:@"display should update!"];
     [_meterManager updateMeters];
+    if (!_isOn) {
+        [_meterManager brakePressed];
+    }
 }
 
 //TODO:  fix this method.  it doesn't do anything yet.
@@ -142,27 +149,32 @@
     if (_isOn) {
         _isOn = false;
         [_carOnButton setTitle:@"Turn On"];
-        [_engineIndicatorView setBackgroundColor:[NSColor whiteColor]];
+        [_engineIndicatorView setBackgroundColor:[NSColor redColor]];
     } else {
         _isOn = true;
         [_carOnButton setTitle:@"Turn Off"];
-        [_engineIndicatorView setBackgroundColor:[NSColor redColor]];
+        [_engineIndicatorView setBackgroundColor:[NSColor grayColor]];
+        [self gasPedalPressed:nil];
     }
+    [_engineIndicatorView setNeedsDisplay:TRUE];
 }
+
 - (IBAction)toggleLights:(id)sender {
     if (_lightsOn) {
         _lightsOn = false;
         [_lightsButton setTitle:@"Lights On"];
-        [_lightIndicatorView setBackgroundColor:[NSColor yellowColor]];
+        [_lightIndicatorView setBackgroundColor:[NSColor grayColor]];
     } else {
         _lightsOn = true;
         [_lightsButton setTitle:@"Lights Off"];
-        [_lightIndicatorView setBackgroundColor:[NSColor whiteColor]];
-    }}
+        [_lightIndicatorView setBackgroundColor:[NSColor yellowColor]];
+    }
+    [_lightIndicatorView setNeedsDisplay:TRUE];
+}
 
 -(void)modelDidUpdate:(AModel*)model {
     if ([model isKindOfClass:[OITRPMModel class]]) {
-        [_rpm setValue:[model value]/100];
+        [_rpm setValue:[model value]/1000];
     } else if ([model isKindOfClass:[OITVelocityModel class]]) {
         [_speed setValue:[model value]];
     } else if ([model isKindOfClass:[OITFuelModel class]]) {

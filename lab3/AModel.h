@@ -19,6 +19,7 @@
     float _maxValue;
     float _minValue;
     float _delta;
+    float _finalValue;
     id<ModelDelegate> _delegate;
 }
 @property (nonatomic, assign) float value;
@@ -31,6 +32,7 @@
 
 - (void)update;
 
+- (void)setFinalValue:(float)value WithRate:(float)rate;
 /**
  * Returns float value between 0 and 1 representing how full this model object is.
  */

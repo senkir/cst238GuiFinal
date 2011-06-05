@@ -22,6 +22,7 @@
     NSBox *_segment5;
     NSBox *_segment6;    
     NSBox *_segment7;
+    NSBox *_decimal;
     
     NSArray *_segments;
     NSUInteger _value;
@@ -38,6 +39,7 @@
 @property (nonatomic, retain) IBOutlet NSBox *segment5;
 @property (nonatomic, retain) IBOutlet NSBox *segment6;
 @property (nonatomic, retain) IBOutlet NSBox *segment7;
+@property (nonatomic, retain) IBOutlet NSBox *decimal;
 @property (nonatomic, retain) NSView* parent;
 
 @property (nonatomic, assign) NSUInteger maxValue;
@@ -48,4 +50,5 @@
 - (id)initWithParentView:(NSView*)parent;
 - (void)setValue:(NSUInteger)value withOverflow:(bool)overflowEnabled;
 - (void)incrementDigit;
+- (void)showDecimal:(bool)show;
 @end

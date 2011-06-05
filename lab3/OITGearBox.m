@@ -18,6 +18,14 @@
 #define KRPMDeltaForUpshift             -3000.0f
 #define kRPMDeltaForDownshift           3000.0f
 #define kRPMEfficiencyCoefficient       500
+#define kRPMRateOfChange                1000
+
+#define kGearRatio1st               1
+#define kGearRatio2nd               2
+#define kGearRatio3rd               4
+#define kGearRatio4th               6
+#define kGearRatio5th               10
+
 @implementation OITGearBox
 @synthesize engine = _engine;
 @synthesize speed = _speed;
@@ -29,7 +37,12 @@
         _minValue = -1.0f;
         _maxValue = 5.0f;
         _value = 1.0f; //start in 1st for testing purposes
-        _gears = [[NSArray arrayWithObjects:[OITGearModel gearWithRatio:1], [OITGearModel gearWithRatio:2], [OITGearModel gearWithRatio:4], [OITGearModel gearWithRatio:6], [OITGearModel gearWithRatio:10], nil] retain];
+        _gears = [[NSArray arrayWithObjects:[OITGearModel gearWithRatio:kGearRatio1st], 
+                   [OITGearModel gearWithRatio:kGearRatio2nd], 
+                   [OITGearModel gearWithRatio:kGearRatio3rd], 
+                   [OITGearModel gearWithRatio:kGearRatio4th], 
+                   [OITGearModel gearWithRatio:kGearRatio5th], 
+                   nil] retain];
         _efficiency = 
         _baseEfficiency = 25; //miles per gallon
     }
@@ -52,12 +65,13 @@
 
 - (void)upshift {
     [self incrementValueBy:1.0];
-    [_engine setDelta:KRPMDeltaForUpshift];
-    [_speed setDelta:10];
+//    [_engine setDelta:KRPMDeltaForUpshift];
+    [_engine setFinalValue:[_engine value] + KRPMDeltaForUpshift WithRate:-kRPMRateOfChange];
 }
 
 - (void)downshift {
     [self incrementValueBy:-1.0];
+    [_engine setFinalValue:[_engine value] + kRPMDeltaForDownshift WithRate:kRPMRateOfChange];
 }
 
 - (float)ratioForGear {
@@ -81,11 +95,16 @@
 
 - (void)revUp {
     //TODO: gague this by a factor of the gear we're in
-    [_engine setDelta:kRPMIncreasePerButtonPress];
+//    [_engine setDelta:kRPMIncreasePerButtonPress];
+    float finalValue = [_engine value] + kRPMIncreasePerButtonPress;
+    float rate = kRPMRateOfChange;
+    [_engine setFinalValue:finalValue WithRate:rate];
 }
 
 - (void)revDown {
-    [_engine setDelta:kRPMDecreasePerButtonPress];
+//    [_engine setDelta:kRPMDecreasePerButtonPress];
+    [_engine setFinalValue:[_engine value] + kRPMDecreasePerButtonPress WithRate:-kRPMRateOfChange];
+
 }
 
 - (void)update {

@@ -16,6 +16,7 @@
 @synthesize maxValue = _maxValue;
 @synthesize delegate = _delegate;
 @synthesize label = _label;
+@synthesize decimalPlacement = _decimalPlacement;
 
 //- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 //{
@@ -33,6 +34,14 @@
         _value = 0;
         _maxValue = 10*digits - 1;
         _numberOfDigits = digits;
+    }
+    return self;
+}
+
+- (id)initWithNumberOfDigits:(int)digits AndDecimalPlaceAfterDigit:(int)decimalPlacing {
+    self = [self initWithNumberOfDigits:digits];
+    if (self) {
+        [self setDecimalPlacement:decimalPlacing];
     }
     return self;
 }
@@ -80,18 +89,24 @@
             [digit setNextDigit:[controllers objectAtIndex:i - 1]];
         }
         [controllers addObject:digit];
+        [digit release];
     }
     _digitControllerArray = controllers;
-    
+    if (_decimalPlacement) {
+        [[_digitControllerArray objectAtIndex:_decimalPlacement - 1] showDecimal:YES];
+    }
 }
 - (void)setTitle:(NSString *)title {
 //    [super setTitle:title];
     [_label setTitleWithMnemonic:title];
 }
 
-- (void)setValue:(NSUInteger)value {
+- (void)setValue:(float)value {
+    float shift = 0;
+    if (_decimalPlacement) shift = _numberOfDigits - _decimalPlacement;
+    value = value * pow(10,shift);
     if ( value != _value ) {
-        _value = value % _maxValue;
+        _value = lround(value) % lround(_maxValue);
         
         //set the digits right - to - left
         NSUInteger interimValue = value;
@@ -108,12 +123,12 @@
     }
 }
 
-- (void)setMaxValue:(NSUInteger)maxValue {
+- (void)setMaxValue:(float)maxValue {
     if ( maxValue != _maxValue ) {
         _maxValue = maxValue;
         
         //set the digits right - to - left
-        NSUInteger interimValue = maxValue;
+        NSUInteger interimValue = lround(maxValue);
         for (NSUInteger i = _numberOfDigits; i >= 1 ; i--) {
             NSUInteger thisDigit = interimValue % 10;
             [(OITSevenSegmentDigitController*)[_digitControllerArray objectAtIndex:i - 1] setMaxValue:thisDigit];
@@ -135,6 +150,14 @@
 - (void)digitDidRollOver:(OITSevenSegmentDigitController *)sender {
     if ( _delegate != nil ) {
         [_delegate digitDidRollOver:self];
+    }
+}
+
+- (void)setDecimalPlacement:(NSInteger)decimalPlacement {
+    if (_decimalPlacement != decimalPlacement) {
+        if (decimalPlacement > _numberOfDigits ) decimalPlacement = _numberOfDigits;
+        if (decimalPlacement < 0) decimalPlacement = 0;
+        _decimalPlacement = decimalPlacement;
     }
 }
 

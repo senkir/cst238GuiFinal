@@ -22,6 +22,8 @@
 @synthesize segment5 = _segment5;
 @synthesize segment6 = _segment6;
 @synthesize segment7 = _segment7;
+@synthesize decimal = _decimal;
+
 @synthesize parent = _parent;
 
 @synthesize maxValue = _maxValue;
@@ -64,7 +66,9 @@
     [super loadView];
     _segments = [[NSArray alloc] initWithObjects:_segment1, _segment2, _segment3, 
                  _segment4, _segment5, _segment6, _segment7, nil];
+    [self showDecimal:false];
 }
+
 #pragma mark OITSevenSegmentDigitController
 /**
  Set the parent view for this digit.  Adds this view as a subview of the parent controller
@@ -172,6 +176,14 @@
 - (void)clearDisplay {
     for (NSBox* segment in _segments) {
         [segment removeFromSuperview];
+    }
+}
+
+- (void)showDecimal:(bool)show {
+    if (show) {
+        [self.view addSubview:_decimal];
+    } else {
+        [_decimal removeFromSuperview];
     }
 }
 @end

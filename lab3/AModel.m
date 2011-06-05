@@ -47,7 +47,9 @@
 }
 
 - (void)update {
-    [self incrementValueBy:_delta];
+    if (_value != _finalValue) {
+        [self incrementValueBy:_delta];
+    }
     [_delegate modelDidUpdate:self];
 }
 
@@ -57,4 +59,10 @@
 - (float)percentOfMax {
     return _value / _maxValue;
 }
+
+- (void)setFinalValue:(float)value WithRate:(float)rate {
+    _finalValue = value;
+    [self setDelta:rate];
+}
+
 @end
