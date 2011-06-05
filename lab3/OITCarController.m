@@ -17,7 +17,7 @@
 #import "OITVelocityModel.h"
 
 #define kYbuffer        10.0
-
+#define kXbuffer        20.0
 @implementation OITCarController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -65,12 +65,33 @@
     [_rpm loadView];
     [_rpm setTitle:@"RPM"];
     [self.view addSubview:[_rpm view]];    
-    [[_rpm view] setFrame:NSMakeRect(0, self.view.frame.size.height - _rpm.view.frame.size.height - kYbuffer, _rpm.view.frame.size.width, _rpm.view.frame.size.height)];
+
+    _speed = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:3];
+    [_speed loadView];
+    [_speed setTitle:@"Speed"];
+    [self.view addSubview:[_speed view]];
     
-//    _speed = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:3];
-//    [_speed setTitle:@"Speed"];
-//    [self.view addSubview:[_speed view]];
-//    [[_rpm view] setFrame:NSMakeRect(_rpm.view.frame.size.width + _rpm.view.frame.origin.x, self.view.frame.size.height - _rpm.view.frame.size.height - kYbuffer, _speed.view.frame.size.width, _speed.view.frame.size.height)];
+    _fuel = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:3];
+    [_fuel loadView];
+    [_fuel setTitle:@"Speed"];
+    [self.view addSubview:[_fuel view]];
+    
+    NSDictionary *gagueDictionary = [[NSMutableDictionary alloc] init];
+    [gagueDictionary setValue:_rpm forKey:@"RPM"];
+    [gagueDictionary setValue:_speed forKey:@"Speed"];
+    [gagueDictionary setValue:_fuel forKey:@"Fuel"];
+    
+    NSArray* allControllers = [gagueDictionary allValues];
+    for (int i = 0; i < [allControllers count]; i++) {
+        NSViewController* controller = [allControllers objectAtIndex:i];
+        [[controller view] setFrame:NSMakeRect((controller.view.frame.size.width + kXbuffer ) * i,  
+                                               self.view.frame.size.height - controller.view.frame.size.height - kYbuffer, //window height - contrller height
+                                               controller.view.frame.size.width, 
+                                               controller.view.frame.size.height)];
+
+    }
+    
+//    [[_speed view] setFrame:NSMakeRect(_speed.view.frame.size.width + _speed.view.frame.origin.x, self.view.frame.size.height - _speed.view.frame.size.height - kYbuffer, _speed.view.frame.size.width, _speed.view.frame.size.height)];
 
 }
 
@@ -132,6 +153,8 @@
         [_rpm setValue:[model value]/100];
     } else if ([model isKindOfClass:[OITVelocityModel class]]) {
         [_speed setValue:[model value]];
+    } else if ([model isKindOfClass:[OITFuelModel class]]) {
+        [_fuel setValue:[model value]];
     }
 }
 

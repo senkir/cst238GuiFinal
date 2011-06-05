@@ -30,7 +30,6 @@
 - (id)initWithNumberOfDigits:(int)digits {
     self = [super initWithNibName:@"OITDigitalReadout" bundle:nil];
     if (self) {
-//        _view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 50, 200)];
         _value = 0;
         _maxValue = 10*digits - 1;
         _numberOfDigits = digits;
@@ -69,7 +68,6 @@
         [digitController.view setFrame:NSMakeRect(offsetX, height / 2, width, height)];
     }
     [self.view setFrame:NSMakeRect(0, height, (width + kXbuffer) * digitCount, height)];
-//    [self.view setFrame:NSMakeRect(0, 0, 1200, 300)];
 }
 
 - (void)setupControllerArray {

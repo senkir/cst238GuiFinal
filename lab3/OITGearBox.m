@@ -12,7 +12,7 @@
 #import "OITVelocityModel.h"
 #import "OITLogger.h"
 
-#define kWheelDiameterCoefficient       100
+#define kWheelDiameterCoefficient       250
 #define kRPMIncreasePerButtonPress      500.0f
 #define kRPMDecreasePerButtonPress      -700.0f
 
