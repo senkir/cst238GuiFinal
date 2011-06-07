@@ -18,6 +18,7 @@
         _minValue = 0.0;
         _maxValue = 13.0; //gallons
         _value = _maxValue;
+        _modelType = @"fuel";
     }
     
     return self;

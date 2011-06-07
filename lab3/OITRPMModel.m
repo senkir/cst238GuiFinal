@@ -17,7 +17,7 @@
     if (self) {
         _minValue = 0;
         _maxValue = 8000; //values read are 1/1000 this
-
+        _modelType = @"rpm";
     }
     
     return self;

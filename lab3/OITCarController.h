@@ -32,6 +32,7 @@
     OITDigitalReadoutController*    _speed;
     OITDigitalReadoutController*    _gear;
     OITDigitalReadoutController*    _fuel;
+    OITDigitalReadoutController*    _oil;
 }
 
 - (void)startUpdateTimer;
@@ -44,4 +45,5 @@
 - (IBAction)shiftDown:(id)sender;
 - (IBAction)toggleCarOn:(id)sender;
 - (IBAction)toggleLights:(id)sender;
+- (void)respondToNotification;
 @end

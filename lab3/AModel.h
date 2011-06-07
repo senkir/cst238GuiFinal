@@ -15,6 +15,7 @@
 
 @interface AModel : NSObject {
 @protected
+    NSString*   _modelType;
     float _value;
     float _maxValue;
     float _minValue;

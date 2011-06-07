@@ -10,17 +10,20 @@
 
 @class OITRPMModel;
 @class OITVelocityModel;
+@class OITOilModel;
 
 @interface OITGearBox : AModel {
 @private
-    NSArray         *_gears;
-    OITRPMModel     *_engine;
+    NSArray             *_gears;
+    OITRPMModel         *_engine;
     OITVelocityModel    *_speed;
-    float _baseEfficiency;
-    float _efficiency;
+    OITOilModel         *_oil;
+    float               _baseEfficiency;
+    float               _efficiency;
 }
 @property (nonatomic, retain) OITRPMModel *engine;
 @property (nonatomic, retain) OITVelocityModel *speed;
+@property (nonatomic, retain) OITOilModel   *oil;
 - (void)upshift;
 - (void)downshift;
 - (void)revUp;

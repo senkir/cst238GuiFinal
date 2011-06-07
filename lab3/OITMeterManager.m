@@ -36,18 +36,24 @@
         _speed = [[OITVelocityModel alloc] init];
         [_speed setDelegate:self];
         [_gearBox setSpeed:_speed];
-
+        
+        _oil = [[OITOilModel alloc] init];
+        [_oil setDelegate:self];
+        [_gearBox setOil:_oil];
+        
         _fuel = [[OITFuelModel alloc] init];
         [_fuel setDelegate:self];
         
-        _allMeters = [[NSArray arrayWithObjects:_rpm, _gearBox, _speed, _fuel, nil] retain];  //shorthand reference point
+        //  shorthand reference point
+        _allMeters = [[NSArray arrayWithObjects:_rpm, _gearBox, _speed, _fuel, _oil, nil] retain];
     }
     return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [_allMeters release];
+    _allMeters = nil;
+    
     [_rpm release];
     _rpm = nil;
     [_gearBox release];
@@ -56,6 +62,9 @@
     _speed = nil;
     [_fuel  release];
     _fuel = nil;
+    [_oil release];
+    _oil = nil;
+    
     [super dealloc];
 }
 

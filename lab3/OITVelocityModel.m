@@ -17,6 +17,7 @@
     if (self) {
         _minValue = -30.0f; //mph
         _maxValue = 120.0f;
+        _modelType = @"fuel";
     }
     
     return self;

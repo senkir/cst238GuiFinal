@@ -18,6 +18,7 @@
         _minValue = 0;
         _maxValue = 100;
         _value = 50; //psi?
+        _modelType = @"oil";
     }
     
     return self;

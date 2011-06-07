@@ -26,14 +26,18 @@
 #define kGearRatio4th               6
 #define kGearRatio5th               10
 
+#define kOilPressureBaseRate        0.2f
+
 @implementation OITGearBox
 @synthesize engine = _engine;
 @synthesize speed = _speed;
+@synthesize oil = _oil;
 
 - (id)init
 {
     self = [super init];
     if (self) {
+        _modelType = @"gearBox";
         _minValue = -1.0f;
         _maxValue = 5.0f;
         _value = 1.0f; //start in 1st for testing purposes
@@ -46,7 +50,6 @@
         _efficiency = 
         _baseEfficiency = 25; //miles per gallon
     }
-    
     return self;
 }
 
@@ -59,6 +62,9 @@
     
     [_engine release];
     _engine = nil;
+    
+    [_oil release];
+    _oil = nil;
     
     [super dealloc];
 }
@@ -99,6 +105,16 @@
     float finalValue = [_engine value] + kRPMIncreasePerButtonPress;
     float rate = kRPMRateOfChange;
     [_engine setFinalValue:finalValue WithRate:rate];
+    [_engine value];
+    
+    // max oil pressure factor of engine rpm
+    // 8000rpm = 70psi
+    // min 50psi
+    // delta =  20psi
+    float maxValue = [_engine value] / 600 + 50;
+    float oilPressureRate = kOilPressureBaseRate * ([_engine value] / 300);
+    [_oil setFinalValue:maxValue WithRate:oilPressureRate];
+
 }
 
 - (void)revDown {

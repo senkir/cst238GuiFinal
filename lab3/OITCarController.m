@@ -19,6 +19,7 @@
 
 #define kYbuffer        10.0
 #define kXbuffer        20.0
+#define kColumnsPerRow   4
 @implementation OITCarController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,6 +30,7 @@
         [_meterManager setDelegate:self];
         _isOn = FALSE;
         _lightsOn = FALSE;
+        
     }
     
     return self;
@@ -63,9 +65,14 @@
 
 - (void)loadComponents {
     [OITLogger logFromSender:[self description] message:@"Load components"];
+    
+    /***** Initial state of indicators *****/
+    
     [_engineIndicatorView setBackgroundColor:[NSColor redColor]];
     [_lightIndicatorView setBackgroundColor:[NSColor grayColor]];
-    //RPM
+    
+    /***** Load the Gagues *****/
+    
     _rpm = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:3 AndDecimalPlaceAfterDigit:1];
     [_rpm loadView];
     [_rpm setTitle:@"RPM"];
@@ -86,21 +93,34 @@
     [_gear setTitle:@"Gear"];
     [self.view addSubview:[_gear view]];
     
+    _oil = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:3 AndDecimalPlaceAfterDigit:2];
+    [_oil loadView];
+    [_oil setTitle:@"Oil"];
+    [self.view addSubview:[_oil view]];
+    
     NSDictionary *gagueDictionary = [[NSMutableDictionary alloc] init];
     [gagueDictionary setValue:_rpm forKey:@"RPM"];
     [gagueDictionary setValue:_speed forKey:@"Speed"];
     [gagueDictionary setValue:_fuel forKey:@"Fuel"];
     [gagueDictionary setValue:_gear forKey:@"Gear"];
+    [gagueDictionary setValue:_oil forKey:@"Oil"];
     
     NSArray* allControllers = [gagueDictionary allValues];
     NSUInteger xOffset = 0;
+    NSUInteger yOffset = kYbuffer;
+    
+    /******* Position Gagues ******/
+    
     for (int i = 0; i < [allControllers count]; i++) {
         NSViewController* controller = [allControllers objectAtIndex:i];
-        [[controller view] setFrame:NSMakeRect(xOffset,  
-                                               self.view.frame.size.height - controller.view.frame.size.height - kYbuffer, //window height - contrller height
+        [[controller view] setFrame:NSMakeRect(xOffset,
+                                               self.view.frame.size.height - controller.view.frame.size.height - yOffset,
                                                controller.view.frame.size.width, 
                                                controller.view.frame.size.height)];
         xOffset += controller.view.frame.size.width + kXbuffer;
+        if ( 0 == i % kColumnsPerRow ) {
+            yOffset += controller.view.frame.size.height + kYbuffer;
+        }
     }
     
 //    [[_speed view] setFrame:NSMakeRect(_speed.view.frame.size.width + _speed.view.frame.origin.x, self.view.frame.size.height - _speed.view.frame.size.height - kYbuffer, _speed.view.frame.size.width, _speed.view.frame.size.height)];
@@ -174,6 +194,9 @@
 }
 
 -(void)modelDidUpdate:(AModel*)model {
+    
+    //todo: refactor this into the observer pattern
+    
     if ([model isKindOfClass:[OITRPMModel class]]) {
         [_rpm setValue:[model value]/1000];
     } else if ([model isKindOfClass:[OITVelocityModel class]]) {
@@ -182,8 +205,13 @@
         [_fuel setValue:[model value]];
     } else if ([model isKindOfClass:[OITGearBox class]]) {
         [_gear setValue:[model value]];
+    } else if ([model isKindOfClass:[OITOilModel class]]) {
+        [_oil setValue:[model value]];
     }
-
 }
+         
+ - (void)respondToNotification {
+     //do stuff 
+ }
 
 @end

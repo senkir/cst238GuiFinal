@@ -27,6 +27,7 @@
 {
     self = [super init];
     if (self) {
+        _modelType = @"gear";
     }
     
     return self;

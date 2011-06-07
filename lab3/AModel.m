@@ -22,6 +22,7 @@
         _minValue = 0;
         _maxValue = 0;
         _value = 0;
+        _modelType = @"model";
     }
     
     return self;
@@ -29,6 +30,9 @@
 
 - (void)dealloc
 {
+    [_modelType release];
+    _modelType = nil;
+    
     [super dealloc];
 }
 
@@ -51,6 +55,8 @@
         [self incrementValueBy:_delta];
     }
     [_delegate modelDidUpdate:self];
+    NSString* notification = [NSString stringWithFormat:@"%@DidUpdate", _modelType];
+    [[NSNotificationCenter defaultCenter] postNotificationName:notification object:self];
 }
 
 /**
