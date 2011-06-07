@@ -56,6 +56,9 @@
 }
 
 @property (nonatomic, retain) id<OITMeterManagerDelegate> delegate;
+
++ (OITMeterManager*)sharedOITMeterManager;
+
 - (void)updateMeters;
 
 - (void)gasPressed;

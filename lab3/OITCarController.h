@@ -15,6 +15,8 @@
 #import "OITMeterManager.h"
 #import "OITStyledView.h"
 
+//TODO:  integrate images for clarity of what goes to what
+
 @interface OITCarController : NSViewController <OITTimeManagerDelegate, OITMeterManagerDelegate> {
 @private
     

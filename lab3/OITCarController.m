@@ -36,7 +36,7 @@ static OITCarController *sharedInstance = nil;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _meterManager = [[OITMeterManager alloc] init];
+        _meterManager = [OITMeterManager sharedOITMeterManager];
         [_meterManager setDelegate:self];
         _isOn = FALSE;
         _lightsOn = FALSE;

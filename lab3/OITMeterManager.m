@@ -27,6 +27,8 @@
 
 @implementation OITMeterManager
 
+static OITMeterManager *sharedInstance = nil;
+
 @synthesize delegate = _delegate;
 
 - (id)init
@@ -95,6 +97,53 @@
     _trip = nil;
     
     [super dealloc];
+}
+
+/** Singleton constructor **/
++ (OITMeterManager*)sharedOITMeterManager {
+    @synchronized(self) {
+        if (sharedInstance == nil) {
+            [[self alloc] init];
+        }
+    }
+    return sharedInstance;
+}
+
++ (id)allocWithZone:(NSZone *)zone
+{
+    @synchronized(self) {
+        if (sharedInstance == nil) {
+            sharedInstance = [super allocWithZone:zone];
+            return sharedInstance;
+        }
+    }
+    
+    return nil;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    return self;
+}
+
+- (id)retain
+{
+    return self;
+}
+
+- (void)release
+{
+    // do nothing
+}
+
+- (id)autorelease
+{
+    return self;
+}
+
+- (NSUInteger)retainCount
+{
+    return NSUIntegerMax; // This is sooo not zero
 }
 
 - (void)updateMeters {
