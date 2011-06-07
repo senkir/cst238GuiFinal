@@ -36,6 +36,11 @@
     OITDigitalReadoutController*    _oil;
     OITDigitalReadoutController*    _temp;
     OITDigitalReadoutController*    _charge;
+    
+    OITDigitalReadoutController*    _odometer;
+    OITDigitalReadoutController*    _trip;
+    
+    NSMutableDictionary*            _allModels;
 }
 
 @property (nonatomic, readonly) bool isOn;
@@ -49,9 +54,15 @@
 //UI Interactions
 - (IBAction)gasPedalPressed:(id)sender;
 - (IBAction)brakePedalPressed:(id)sender;
+
 - (IBAction)shiftUp:(id)sender;
 - (IBAction)shiftDown:(id)sender;
+
 - (IBAction)toggleCarOn:(id)sender;
 - (IBAction)toggleLights:(id)sender;
+
+- (IBAction)resetTrip:(id)sender;
+- (IBAction)refillGas:(id)sender;
+
 - (void)respondToNotification;
 @end

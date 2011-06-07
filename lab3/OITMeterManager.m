@@ -16,10 +16,14 @@
 #import "OITTemperatureModel.h"
 #import "OITChargeModel.h"
 
+#import "OITOdometerModel.h"
+#import "OITTripMeterModel.h"
+
 #import "OITCarController.h"
 #import "OITLogger.h"
 
-#define kRPMDeltaForNoFuel  -5000
+#define kRPMDeltaForNoFuel      -5000
+#define kMilesPerTenthOfASecond (1.0f/3600.0f)
 
 @implementation OITMeterManager
 
@@ -56,9 +60,15 @@
         
         _charge = [[OITChargeModel alloc] init];
         [_charge setDelegate:self];
+        
+        _miles = [[OITOdometerModel alloc] init];
+        [_miles setDelegate:self];
+        
+        _trip = [[OITTripMeterModel alloc] init];
+        [_trip setDelegate:self];
          
         //  shorthand reference point
-        _allMeters = [[NSArray arrayWithObjects:_rpm, _gearBox, _speed, _fuel, _oil, _temp, _charge, nil] retain];
+        _allMeters = [[NSArray arrayWithObjects:_rpm, _gearBox, _speed, _fuel, _oil, _temp, _charge, _trip, _miles, nil] retain];
     }
     return self;
 }
@@ -81,6 +91,8 @@
     _temp = nil;
     [_charge release];
     _charge = nil;
+    [_trip release];
+    _trip = nil;
     
     [super dealloc];
 }
@@ -89,7 +101,7 @@
     for (AModel *model in _allMeters) {
         [model update];
         NSString* modelMessage = [NSString stringWithFormat:@"%@ has a value of %f",[model description] , [model value]];
-        [OITLogger logFromSender:[self description] message:modelMessage];
+        [OITLogger logFromSender:[self description] debug:modelMessage];
     }
 }
 
@@ -102,7 +114,7 @@
 }
 
 - (void)fuelIsEmpty:(id)sender {
-    [OITLogger logFromSender:[self description] message:@"Fuel is Empty!"];
+    [OITLogger logFromSender:[self description] warn:@"Fuel is Empty!"];
     [_rpm setDelta:kRPMDeltaForNoFuel];
 }
 
@@ -126,5 +138,19 @@
     return _gearBox;
 }
 
+- (void)resetTrip {
+    [_trip reset];
+}
+
+- (void)refillGas {
+    [_fuel refill];
+}
+
+- (float) milesTraveled:(OITOdometerModel*)model {
+    float toReturn = [_speed value] * kMilesPerTenthOfASecond;
+    NSString* message = [NSString stringWithFormat:@"%f mph.  milesTraveled = %f", [_speed value], toReturn];
+    [OITLogger logFromSender:[self description] debug:message];
+    return toReturn;
+}
 
 @end

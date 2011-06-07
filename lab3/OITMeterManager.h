@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AModel.h"
 #import "OITFuelModel.h"
+#import "OITOdometerModel.h"
 
 @class OITFuelModel;
 @class OITVelocityModel;
@@ -17,6 +18,7 @@
 @class OITOilModel;
 @class OITTemperatureModel;
 @class OITChargeModel;
+@class OITTripMeterModel;
 
 @protocol OITMeterManagerDelegate <NSObject>
 
@@ -33,19 +35,21 @@
     OITOilModel         *_oil;
     OITTemperatureModel *_temp;
     OITChargeModel      *_charge;
+    OITOdometerModel    *_miles;
+    OITTripMeterModel   *_trip;
     
     NSArray             *_allMeters;
     /*
-     gear
-     temp
-     fuel
-     rpm
-     oil
-     charge
-     car
-     velocity
-     odometer
-     trip
+     gear   x
+     temp   x
+     fuel   x
+     rpm    x
+     oil    x
+     charge x
+     car    x
+     velocity   x
+     odometer   x
+     trip   x
      */
     
     id<OITMeterManagerDelegate> _delegate;
@@ -53,7 +57,12 @@
 
 @property (nonatomic, retain) id<OITMeterManagerDelegate> delegate;
 - (void)updateMeters;
+
 - (void)gasPressed;
 - (void)brakePressed;
+
+- (void)resetTrip;
+- (void)refillGas;
+
 - (OITGearBox*)gearBox;
 @end

@@ -15,4 +15,4 @@ After beginning my work, I realized that I needed to build a few extra classes. 
 
 I also needed to add in a gearbox, to deal with changes to meters which relate to the state of the engine itself.  
 
-
+To assist in debugging, I created a logging class with static methods so that I don't have to instantiate a logger for each class I implement.  I'm building it with different logging levels.  I know there's a way to do this so that the log statements get compiled out, but I forget how to do this.  If I have time at the end I may reconfigure this, but for lab purposes it is probably good enough.

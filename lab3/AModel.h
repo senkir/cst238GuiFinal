@@ -26,6 +26,7 @@
 @property (nonatomic, assign) float value;
 @property (nonatomic, assign) float delta;
 @property (nonatomic, retain) id<ModelDelegate> delegate;
+@property (nonatomic, retain) NSString* modelType;
 
 - (void)incrementValueBy:(float) value;
 

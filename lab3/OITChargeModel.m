@@ -20,6 +20,7 @@
         _minValue = 0;
         _maxValue = 100;
         _value = 100;
+        _modelType = @"charge";
     }
     
     return self;

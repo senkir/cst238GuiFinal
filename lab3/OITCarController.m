@@ -18,10 +18,12 @@
 #import "OITOilModel.h"
 #import "OITTemperatureModel.h"
 #import "OITChargeModel.h"
+#import "OITOdometerModel.h"
+#import "OITTripMeterModel.h"
 
 #define kYbuffer        10.0
 #define kXbuffer        20.0
-#define kColumnsPerRow   4
+#define kColumnsPerRow   3
 
 @implementation OITCarController
 
@@ -93,12 +95,33 @@ static OITCarController *sharedInstance = nil;
 
 - (void)dealloc
 {
-
+    [_rpm release];
+    _rpm = nil;
+    [_speed release];
+    _speed = nil;
+    [_gear release];
+    _gear = nil;
+    [_fuel release];
+    _fuel = nil;
+    [_oil release];
+    _oil = nil;
+    [_temp release];
+    _temp = nil;
+    [_charge release];
+    _charge = nil;
+    [_odometer release];
+    _odometer = nil;
+    [_trip release];
+    _trip = nil;
+    
     [_meterManager release];
     _meterManager = nil;
     
     [_thread release];
     _thread = nil;
+    
+    [_allModels release];
+    _allModels = nil;
     
     [super dealloc];
 }
@@ -120,7 +143,7 @@ static OITCarController *sharedInstance = nil;
 }
 
 - (void)loadComponents {
-    [OITLogger logFromSender:[self description] message:@"Load components"];
+    [OITLogger logFromSender:[self description] debug:@"Load components"];
     
     /***** Initial state of indicators *****/
     
@@ -164,24 +187,36 @@ static OITCarController *sharedInstance = nil;
     [_charge setTitle:@"Battery"];
     [self.view addSubview:[_charge view]];
     
+    _odometer = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:7 AndDecimalPlaceAfterDigit:6];
+    [_odometer loadView];
+    [_odometer setTitle:@"Miles"];
+    [self.view addSubview:[_odometer view]];
+    
+    _trip = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:7 AndDecimalPlaceAfterDigit:6];
+    [_trip loadView];
+    [_trip setTitle:@"Trip"];
+    [self.view addSubview:[_trip view]];
+    
     //convenience method that i need to use someplace
     
-    NSDictionary *gagueDictionary = [[NSMutableDictionary alloc] init];
-    [gagueDictionary setValue:_rpm forKey:@"RPM"];
-    [gagueDictionary setValue:_speed forKey:@"Speed"];
-    [gagueDictionary setValue:_fuel forKey:@"Fuel"];
-    [gagueDictionary setValue:_gear forKey:@"Gear"];
-    [gagueDictionary setValue:_oil forKey:@"Oil"];
-    [gagueDictionary setValue:_temp forKey:@"Temp"];
-    [gagueDictionary setValue:_charge forKey:@"Battery"];
+    _allModels = [[NSMutableDictionary alloc] init];
+    [_allModels setValue:_rpm forKey:@"rpm"];
+    [_allModels setValue:_speed forKey:@"speed"];
+    [_allModels setValue:_fuel forKey:@"fuel"];
+    [_allModels setValue:_gear forKey:@"gearBox"];
+    [_allModels setValue:_oil forKey:@"oil"];
+    [_allModels setValue:_temp forKey:@"temp"];
+    [_allModels setValue:_charge forKey:@"charge"];
+    [_allModels setValue:_odometer forKey:@"miles"];
+    [_allModels setValue:_trip forKey:@"trip"];
     
-    NSArray* allControllers = [gagueDictionary allValues];
+    NSArray* allControllers = [_allModels allValues];
     NSUInteger xOffset = 0;
     NSUInteger yOffset = kYbuffer;
     
     /******* Position Gagues ******/
     
-    for (int i = 0; i < [allControllers count]; i++) {
+    for (int i = 1; i < [allControllers count]; i++) {
         NSViewController* controller = [allControllers objectAtIndex:i];
         [[controller view] setFrame:NSMakeRect(xOffset,
                                                self.view.frame.size.height - controller.view.frame.size.height - yOffset,
@@ -227,9 +262,9 @@ static OITCarController *sharedInstance = nil;
 }
 
 //TODO:  fix this method.  it doesn't do anything yet.
-- (void)keyDown:(NSEvent *)theEvent {
-    [OITLogger logFromSender:[self description] message:@"key down event occured!"];
-}
+//- (void)keyDown:(NSEvent *)theEvent {
+//    [OITLogger logFromSender:[self description] message:@"key down event occured!"];
+//}
 
 - (IBAction)shiftUp:(id)sender {
     [[_meterManager gearBox] upshift];
@@ -266,23 +301,44 @@ static OITCarController *sharedInstance = nil;
 
 -(void)modelDidUpdate:(AModel*)model {
     
+    //use the dictionary we made earlier to match the key values
+    OITDigitalReadoutController* gague = [_allModels valueForKey:[model modelType]];
+    if (gague == nil) {
+        NSString* message = [NSString stringWithFormat:@"No Gague found For Model %@", [model description]];
+        [OITLogger logFromSender:[self description] error:message];
+    } else {
+        if ([[model modelType] isEqualToString:@"miles"]) {
+            [OITLogger logFromSender:[self description] debug:@"Miles gague detected"];
+        }
+        float viewCoefficient = 1.0f;
+        if ([[model modelType] isEqualToString:@"rpm"]) {
+            viewCoefficient = 1.0f/1000.0f;
+        }
+        [gague setValue:[model value]*viewCoefficient];
+    }
+    
+    
     //todo: refactor this into the observer pattern
     
-    if ([model isKindOfClass:[OITRPMModel class]]) {
-        [_rpm setValue:[model value]/1000];
-    } else if ([model isKindOfClass:[OITVelocityModel class]]) {
-        [_speed setValue:[model value]];
-    } else if ([model isKindOfClass:[OITFuelModel class]]) {
-        [_fuel setValue:[model value]];
-    } else if ([model isKindOfClass:[OITGearBox class]]) {
-        [_gear setValue:[model value]];
-    } else if ([model isKindOfClass:[OITOilModel class]]) {
-        [_oil setValue:[model value]];
-    } else if ([model isKindOfClass:[OITTemperatureModel class]]) {
-        [_temp setValue:[model value]];
-    } else if ([model isKindOfClass:[OITChargeModel class]]) {
-        [_charge setValue:[model value]];
-    }
+//    if ([model isKindOfClass:[OITRPMModel class]]) {
+//        [_rpm setValue:[model value]/1000];
+//    } else if ([model isKindOfClass:[OITVelocityModel class]]) {
+//        [_speed setValue:[model value]];
+//    } else if ([model isKindOfClass:[OITFuelModel class]]) {
+//        [_fuel setValue:[model value]];
+//    } else if ([model isKindOfClass:[OITGearBox class]]) {
+//        [_gear setValue:[model value]];
+//    } else if ([model isKindOfClass:[OITOilModel class]]) {
+//        [_oil setValue:[model value]];
+//    } else if ([model isKindOfClass:[OITTemperatureModel class]]) {
+//        [_temp setValue:[model value]];
+//    } else if ([model isKindOfClass:[OITChargeModel class]]) {
+//        [_charge setValue:[model value]];
+//    } else if ([model isKindOfClass:[OITOdometerModel class]]) {
+//        if (<#condition#>) {
+//            <#statements#>
+//        }
+//    }
     
 //    if (_isOn && [_rpm value] == 0) [self toggleCarOn:false];
 }
@@ -290,5 +346,14 @@ static OITCarController *sharedInstance = nil;
  - (void)respondToNotification {
      //do stuff 
  }
+
+
+- (IBAction)resetTrip:(id)sender {
+    [_meterManager resetTrip];
+}
+
+- (IBAction)refillGas:(id)sender {
+    [_meterManager refillGas];
+}
 
 @end

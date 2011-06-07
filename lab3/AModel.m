@@ -14,6 +14,7 @@
 @synthesize value = _value;
 @synthesize delta = _delta;
 @synthesize delegate = _delegate;
+@synthesize modelType = _modelType;
 
 - (id)init
 {
@@ -37,7 +38,7 @@
 }
 
 - (void)incrementValueBy:(float) value {
-    self.value += value;
+    _value += value;
     if (_value > _maxValue) {
         _value = _maxValue;
     }
