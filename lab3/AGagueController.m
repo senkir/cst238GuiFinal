@@ -24,7 +24,7 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [self initWithNibName:nil bundle:nil];
     if (self) {
-        self.view.frame = frame;
+        self.view = [[NSView alloc] initWithFrame:frame];
         [self loadComponents];
     }
     return self;

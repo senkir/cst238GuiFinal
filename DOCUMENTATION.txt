@@ -18,3 +18,5 @@ I also needed to add in a gearbox, to deal with changes to meters which relate t
 To assist in debugging, I created a logging class with static methods so that I don't have to instantiate a logger for each class I implement.  I'm building it with different logging levels.  I know there's a way to do this so that the log statements get compiled out, but I forget how to do this.  If I have time at the end I may reconfigure this, but for lab purposes it is probably good enough.
 
 I wound up refactoring the update method for the car controller.  I was doing a lot of if/else statements, and i replaced that with a call to a dictionary object.  This implementation means that I have to do less coding when gagues are added to the display.  
+
+I'm now attempting to pull out the rendering of the dials from the car controller.  I mistakenly coupled their usage to the car controller in a way that made it difficult to swap them out.  I think I can do better by adding an abstract view controller class which both of my dials can inherit from.  This should work as long as I have enough time to finish implementing them.

@@ -8,6 +8,7 @@
 
 #import "OITDigitalGagueController.h"
 #import "OITDigitalReadoutController.h"
+#import "OITCarController.h"
 
 #import "OITLogger.h"
 
@@ -125,6 +126,8 @@
             xOffset = 0;
         }
     }
+    
+    [self.view setNextResponder:[OITCarController sharedOITCarController].view];
 }
 
 -(void)modelDidUpdate:(AModel*)model {
