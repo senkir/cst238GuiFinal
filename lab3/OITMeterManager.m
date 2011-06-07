@@ -13,7 +13,10 @@
 #import "OITVelocityModel.h"
 #import "OITGearBox.h"
 #import "OITOilModel.h"
+#import "OITTemperatureModel.h"
+#import "OITChargeModel.h"
 
+#import "OITCarController.h"
 #import "OITLogger.h"
 
 #define kRPMDeltaForNoFuel  -5000
@@ -26,6 +29,9 @@
 {
     self = [super init];
     if (self) {
+        
+        /*** This is where the model objects actually get instantiated ***/
+        
         _gearBox = [[OITGearBox alloc] init];
         [_gearBox setDelegate:self];
         
@@ -44,8 +50,15 @@
         _fuel = [[OITFuelModel alloc] init];
         [_fuel setDelegate:self];
         
+        _temp = [[OITTemperatureModel alloc] init];
+        [_temp setDelegate:self];
+        [_gearBox setTemp:_temp];
+        
+        _charge = [[OITChargeModel alloc] init];
+        [_charge setDelegate:self];
+         
         //  shorthand reference point
-        _allMeters = [[NSArray arrayWithObjects:_rpm, _gearBox, _speed, _fuel, _oil, nil] retain];
+        _allMeters = [[NSArray arrayWithObjects:_rpm, _gearBox, _speed, _fuel, _oil, _temp, _charge, nil] retain];
     }
     return self;
 }
@@ -64,6 +77,10 @@
     _fuel = nil;
     [_oil release];
     _oil = nil;
+    [_temp release];
+    _temp = nil;
+    [_charge release];
+    _charge = nil;
     
     [super dealloc];
 }
@@ -71,10 +88,8 @@
 - (void)updateMeters {
     for (AModel *model in _allMeters) {
         [model update];
-//        if ([model delta] > 0) {
-            NSString* modelMessage = [NSString stringWithFormat:@"%@ has a value of %f",[model description] , [model value]];
-            [OITLogger logFromSender:[self description] message:modelMessage];
-//        }
+        NSString* modelMessage = [NSString stringWithFormat:@"%@ has a value of %f",[model description] , [model value]];
+        [OITLogger logFromSender:[self description] message:modelMessage];
     }
 }
 
@@ -93,10 +108,8 @@
 
 - (float)fuelConsumptionRate {
     float rate = 0;
-    if ([_speed value] > 0) {
-        rate = [_gearBox efficiencyForEngine] / 600;
-    } else {
-        rate = [_gearBox efficiencyForEngine] / 600;
+    if ([[OITCarController sharedOITCarController] isOn]) {
+        rate = [_gearBox efficiencyForEngine] / 400;
     }
     if (rate != 0 ) {
         NSString* message = [NSString stringWithFormat:@"rate is %f", rate];

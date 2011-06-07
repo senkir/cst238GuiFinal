@@ -7,8 +7,9 @@
 //
 
 #import "OITRPMModel.h"
+#import "OITCarController.h"
 
-
+#define kMinValueRunning       200.0f
 @implementation OITRPMModel
 
 - (id)init
@@ -41,4 +42,10 @@
     return _maxValue;
 }
 
+- (void)setFinalValue:(float)value WithRate:(float)rate {
+    if ([[OITCarController sharedOITCarController] isOn] || value <= 0) {
+        value = kMinValueRunning;
+    }
+    [super setFinalValue:value WithRate:rate];
+}
 @end

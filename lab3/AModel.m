@@ -67,7 +67,7 @@
 }
 
 - (void)setFinalValue:(float)value WithRate:(float)rate {
-    _finalValue = value;
+    _finalValue = value > _maxValue? _maxValue : value;
     [self setDelta:rate];
 }
 

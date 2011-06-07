@@ -17,6 +17,7 @@
 
 @interface OITCarController : NSViewController <OITTimeManagerDelegate, OITMeterManagerDelegate> {
 @private
+    
     OITTimerManager* _timerManager;
     OITMeterManager* _meterManager;
     NSThread* _thread;
@@ -33,10 +34,17 @@
     OITDigitalReadoutController*    _gear;
     OITDigitalReadoutController*    _fuel;
     OITDigitalReadoutController*    _oil;
+    OITDigitalReadoutController*    _temp;
+    OITDigitalReadoutController*    _charge;
 }
+
+@property (nonatomic, readonly) bool isOn;
+@property (nonatomic, readonly) bool lightsOn;
 
 - (void)startUpdateTimer;
 - (void)loadComponents;
+
++ (OITCarController*)sharedOITCarController;
 
 //UI Interactions
 - (IBAction)gasPedalPressed:(id)sender;

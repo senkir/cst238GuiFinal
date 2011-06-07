@@ -1,26 +1,26 @@
 //
-//  OITOilModel.m
+//  OITTemperatureModel.m
 //  lab3
 //
-//  Created by Travis Churchill on 6/5/11.
+//  Created by Travis Churchill on 6/6/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "OITOilModel.h"
+#import "OITTemperatureModel.h"
 #import "OITCarController.h"
 
-#define kBaseRateOfCooling      -0.01f
+#define kBaseRateOfCooling      -0.005f
 
-@implementation OITOilModel
+@implementation OITTemperatureModel
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        _minValue = 50;
-        _maxValue = 100;
-        _value = 50; //psi?
-        _modelType = @"oil";
+        _minValue = 68.0;
+        _maxValue = 200.0;
+        _value = 58.8;
+        _modelType = @"temp";
     }
     
     return self;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E20FA74139DFC3000580074 /* OITTemperatureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E20FA73139DFC2F00580074 /* OITTemperatureModel.m */; };
+		4E20FA77139E2D2000580074 /* OITChargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E20FA76139E2D1F00580074 /* OITChargeModel.m */; };
 		4E3706C6139757ED00C790F7 /* OITTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3706C5139757ED00C790F7 /* OITTimerManager.m */; };
 		4E69A05C1399FCB100B59104 /* OITVelocityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69A05B1399FCB000B59104 /* OITVelocityModel.m */; };
 		4E69A05F139A00F300B59104 /* OITRPMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69A05E139A00F300B59104 /* OITRPMModel.m */; };
@@ -43,6 +45,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E20FA72139DFC2E00580074 /* OITTemperatureModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITTemperatureModel.h; sourceTree = "<group>"; };
+		4E20FA73139DFC2F00580074 /* OITTemperatureModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITTemperatureModel.m; sourceTree = "<group>"; };
+		4E20FA75139E2D1D00580074 /* OITChargeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITChargeModel.h; sourceTree = "<group>"; };
+		4E20FA76139E2D1F00580074 /* OITChargeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITChargeModel.m; sourceTree = "<group>"; };
 		4E3706C4139757EC00C790F7 /* OITTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITTimerManager.h; sourceTree = "<group>"; };
 		4E3706C5139757ED00C790F7 /* OITTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITTimerManager.m; sourceTree = "<group>"; };
 		4E69A05A1399FCB000B59104 /* OITVelocityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITVelocityModel.h; sourceTree = "<group>"; };
@@ -136,6 +142,10 @@
 				4E69A05B1399FCB000B59104 /* OITVelocityModel.m */,
 				4EE1972B139C10A600A34BD4 /* OITOilModel.h */,
 				4EE1972C139C10A600A34BD4 /* OITOilModel.m */,
+				4E20FA72139DFC2E00580074 /* OITTemperatureModel.h */,
+				4E20FA73139DFC2F00580074 /* OITTemperatureModel.m */,
+				4E20FA75139E2D1D00580074 /* OITChargeModel.h */,
+				4E20FA76139E2D1F00580074 /* OITChargeModel.m */,
 			);
 			name = Gagues;
 			sourceTree = "<group>";
@@ -388,6 +398,8 @@
 				4E69A070139B52F300B59104 /* OITDigitalReadoutController.m in Sources */,
 				4EE19729139BF07C00A34BD4 /* OITStyledView.m in Sources */,
 				4EE1972D139C10A700A34BD4 /* OITOilModel.m in Sources */,
+				4E20FA74139DFC3000580074 /* OITTemperatureModel.m in Sources */,
+				4E20FA77139E2D2000580074 /* OITChargeModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

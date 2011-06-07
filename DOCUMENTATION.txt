@@ -1,5 +1,18 @@
 Travis Churchill
 Final Project Documentation
 
-Detail:
+Discovery:
+This project will require a model for the temperature, rpm, electrical charge, oil pressure, speed, odometer, trip meter, gear, fuel.
+
+I will need a root controller, with the capability of swapping out views at will.  
+
+Documented Work:
+Putting together so many widgets is proving to be a pain.  The RPM for the engine seems like it should be the driving force for the other controllers.  
+
+I definitely have to put together a model object base class that can be used by the meters in the instrument panel.  The base view controller should be a singleton because several of the model objects need to be able to check on the status of it (for telling whether the car is on, for instance).  
+
+After beginning my work, I realized that I needed to build a few extra classes.  a MeterManager, to handle the updates to the various meters.  This allows the actual car controller to deal with the displaying of the meters, rather than managing the interactions between the objects.  
+
+I also needed to add in a gearbox, to deal with changes to meters which relate to the state of the engine itself.  
+
 

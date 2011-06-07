@@ -15,6 +15,8 @@
 @class OITRPMModel;
 @class OITGearBox;
 @class OITOilModel;
+@class OITTemperatureModel;
+@class OITChargeModel;
 
 @protocol OITMeterManagerDelegate <NSObject>
 
@@ -29,6 +31,9 @@
     OITRPMModel         *_rpm;
     OITGearBox          *_gearBox;
     OITOilModel         *_oil;
+    OITTemperatureModel *_temp;
+    OITChargeModel      *_charge;
+    
     NSArray             *_allMeters;
     /*
      gear

@@ -5,6 +5,7 @@
 //  Created by Travis Churchill on 6/3/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
+#import "OITCarController.h"
 
 #import "OITGearBox.h"
 #import "OITGearModel.h"
@@ -27,11 +28,13 @@
 #define kGearRatio5th               10
 
 #define kOilPressureBaseRate        0.2f
+#define kTempChangeRate             0.05f
 
 @implementation OITGearBox
 @synthesize engine = _engine;
 @synthesize speed = _speed;
 @synthesize oil = _oil;
+@synthesize temp = _temp;
 
 - (id)init
 {
@@ -66,6 +69,9 @@
     [_oil release];
     _oil = nil;
     
+    [_temp release];
+    _temp = nil;
+    
     [super dealloc];
 }
 
@@ -96,6 +102,8 @@
         //this calculation is gibberish
         toReturn = _baseEfficiency * ratio / (rpm / kRPMEfficiencyCoefficient);
     }
+    NSString *message = [NSString stringWithFormat:@"efficiencyForEngine: %f", toReturn];
+    [OITLogger logFromSender:[self description] message:message];
     return toReturn;
 }
 
@@ -107,27 +115,37 @@
     [_engine setFinalValue:finalValue WithRate:rate];
     [_engine value];
     
-    // max oil pressure factor of engine rpm
-    // 8000rpm = 70psi
-    // min 50psi
-    // delta =  20psi
-    float maxValue = [_engine value] / 600 + 50;
-    float oilPressureRate = kOilPressureBaseRate * ([_engine value] / 300);
-    [_oil setFinalValue:maxValue WithRate:oilPressureRate];
-
 }
 
 - (void)revDown {
 //    [_engine setDelta:kRPMDecreasePerButtonPress];
     [_engine setFinalValue:[_engine value] + kRPMDecreasePerButtonPress WithRate:-kRPMRateOfChange];
-
 }
 
 - (void)update {
+    //speed
     float newSpeed = [_engine value] / kWheelDiameterCoefficient * [self ratioForGear];
-    NSString* logStatement = [NSString stringWithFormat:@"%f * %f = %f", [_engine value] / kWheelDiameterCoefficient , [self ratioForGear], newSpeed];
-    [OITLogger logFromSender:[self description] message:logStatement];
+//    NSString* logStatement = [NSString stringWithFormat:@"%f * %f = %f", [_engine value] / kWheelDiameterCoefficient , [self ratioForGear], newSpeed];
+//    [OITLogger logFromSender:[self description] message:logStatement];
     [_speed setValue:newSpeed];
+    
+    if ([[OITCarController sharedOITCarController] isOn]) {
+        
+        // max oil pressure factor of engine rpm
+        // 8000rpm = 70psi
+        // min 50psi
+        // delta =  20psi
+        float finalValue = [_engine value] / 8000 * 60 + 20;
+        float oilPressureRate = kOilPressureBaseRate * ([_engine value] / 500);
+        [_oil setFinalValue:finalValue WithRate:oilPressureRate];
+        
+        //Temperature
+        finalValue = [_engine value] / 8000 * 200;
+        float tempChangeRate = kTempChangeRate * ([_engine value] / 8000) * 2;
+        [_temp setFinalValue:finalValue WithRate:tempChangeRate];
+    }
+
+    
     [super update];
 }
 

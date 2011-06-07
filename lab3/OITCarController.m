@@ -16,11 +16,19 @@
 #import "OITRPMModel.h"
 #import "OITVelocityModel.h"
 #import "OITOilModel.h"
+#import "OITTemperatureModel.h"
+#import "OITChargeModel.h"
 
 #define kYbuffer        10.0
 #define kXbuffer        20.0
 #define kColumnsPerRow   4
+
 @implementation OITCarController
+
+@synthesize isOn = _isOn;
+@synthesize lightsOn = _lightsOn;
+
+static OITCarController *sharedInstance = nil;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,6 +43,54 @@
     
     return self;
 }
+
+/** Singleton constructor **/
++ (OITCarController*)sharedOITCarController {
+    @synchronized(self) {
+        if (sharedInstance == nil) {
+            [[self alloc] initWithNibName:@"OITCarController" bundle:nil];
+        }
+    }
+    return sharedInstance;
+}
+
++ (id)allocWithZone:(NSZone *)zone
+{
+    @synchronized(self) {
+        if (sharedInstance == nil) {
+            sharedInstance = [super allocWithZone:zone];
+            return sharedInstance;
+        }
+    }
+    
+    return nil;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    return self;
+}
+
+- (id)retain
+{
+    return self;
+}
+
+- (void)release
+{
+    // do nothing
+}
+
+- (id)autorelease
+{
+    return self;
+}
+
+- (NSUInteger)retainCount
+{
+    return NSUIntegerMax; // This is sooo not zero
+}
+
 - (void)dealloc
 {
 
@@ -78,7 +134,7 @@
     [_rpm setTitle:@"RPM"];
     [self.view addSubview:[_rpm view]]; 
 
-    _speed = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:3 AndDecimalPlaceAfterDigit:2];
+    _speed = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:4 AndDecimalPlaceAfterDigit:3];
     [_speed loadView];
     [_speed setTitle:@"Speed"];
     [self.view addSubview:[_speed view]];
@@ -93,10 +149,22 @@
     [_gear setTitle:@"Gear"];
     [self.view addSubview:[_gear view]];
     
-    _oil = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:3 AndDecimalPlaceAfterDigit:2];
+    _oil = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:4 AndDecimalPlaceAfterDigit:3];
     [_oil loadView];
     [_oil setTitle:@"Oil"];
     [self.view addSubview:[_oil view]];
+    
+    _temp = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:4 AndDecimalPlaceAfterDigit:3];
+    [_temp loadView];
+    [_temp setTitle:@"Temp"];
+    [self.view addSubview:[_temp view]];
+    
+    _charge = [[OITDigitalReadoutController alloc] initWithNumberOfDigits:4 AndDecimalPlaceAfterDigit:3];
+    [_charge loadView];
+    [_charge setTitle:@"Battery"];
+    [self.view addSubview:[_charge view]];
+    
+    //convenience method that i need to use someplace
     
     NSDictionary *gagueDictionary = [[NSMutableDictionary alloc] init];
     [gagueDictionary setValue:_rpm forKey:@"RPM"];
@@ -104,6 +172,8 @@
     [gagueDictionary setValue:_fuel forKey:@"Fuel"];
     [gagueDictionary setValue:_gear forKey:@"Gear"];
     [gagueDictionary setValue:_oil forKey:@"Oil"];
+    [gagueDictionary setValue:_temp forKey:@"Temp"];
+    [gagueDictionary setValue:_charge forKey:@"Battery"];
     
     NSArray* allControllers = [gagueDictionary allValues];
     NSUInteger xOffset = 0;
@@ -120,6 +190,7 @@
         xOffset += controller.view.frame.size.width + kXbuffer;
         if ( 0 == i % kColumnsPerRow ) {
             yOffset += controller.view.frame.size.height + kYbuffer;
+            xOffset = 0;
         }
     }
     
@@ -150,7 +221,7 @@
 - (void)updateDisplay {
 //    [OITLogger logFromSender:[self description] message:@"display should update!"];
     [_meterManager updateMeters];
-    if (!_isOn) {
+    if (!_isOn && [_rpm value]) {
         [_meterManager brakePressed];
     }
 }
@@ -169,11 +240,11 @@
 - (IBAction)toggleCarOn:(id)sender {
     if (_isOn) {
         _isOn = false;
-        [_carOnButton setTitle:@"Turn On"];
+        [_carOnButton setTitleWithMnemonic:@"Turn &On"];
         [_engineIndicatorView setBackgroundColor:[NSColor redColor]];
     } else {
         _isOn = true;
-        [_carOnButton setTitle:@"Turn Off"];
+        [_carOnButton setTitleWithMnemonic:@"Turn &Off"];
         [_engineIndicatorView setBackgroundColor:[NSColor grayColor]];
         [self gasPedalPressed:nil];
     }
@@ -183,11 +254,11 @@
 - (IBAction)toggleLights:(id)sender {
     if (_lightsOn) {
         _lightsOn = false;
-        [_lightsButton setTitle:@"Lights On"];
+        [_lightsButton setTitleWithMnemonic:@"&Lights On"];
         [_lightIndicatorView setBackgroundColor:[NSColor grayColor]];
     } else {
         _lightsOn = true;
-        [_lightsButton setTitle:@"Lights Off"];
+        [_lightsButton setTitleWithMnemonic:@"&Lights Off"];
         [_lightIndicatorView setBackgroundColor:[NSColor yellowColor]];
     }
     [_lightIndicatorView setNeedsDisplay:TRUE];
@@ -207,7 +278,13 @@
         [_gear setValue:[model value]];
     } else if ([model isKindOfClass:[OITOilModel class]]) {
         [_oil setValue:[model value]];
+    } else if ([model isKindOfClass:[OITTemperatureModel class]]) {
+        [_temp setValue:[model value]];
+    } else if ([model isKindOfClass:[OITChargeModel class]]) {
+        [_charge setValue:[model value]];
     }
+    
+//    if (_isOn && [_rpm value] == 0) [self toggleCarOn:false];
 }
          
  - (void)respondToNotification {

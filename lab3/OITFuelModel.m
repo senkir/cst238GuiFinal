@@ -7,7 +7,7 @@
 //
 
 #import "OITFuelModel.h"
-
+#import "OITCarController.h"
 
 @implementation OITFuelModel
 
@@ -48,8 +48,13 @@
 
 - (void)update {
     [super update];
-    if ([(NSObject*)_delegate respondsToSelector:@selector(fuelConsumptionRate)]) {
-        [self setDelta:-[(id<FuelModelDelegate>)_delegate fuelConsumptionRate]];
+    if ([[OITCarController sharedOITCarController] isOn]) {
+        if ([(NSObject*)_delegate respondsToSelector:@selector(fuelConsumptionRate)]) {
+            [self setDelta:-[(id<FuelModelDelegate>)_delegate fuelConsumptionRate]];
+        }
+    } else {
+        [self setDelta:0];
     }
+
 }
 @end

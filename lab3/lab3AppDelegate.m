@@ -18,7 +18,7 @@
 {
     // TODO: attach CarController
     [OITLogger logFromSender:[self description] message:@"application Did Finish Launching"];
-    _carController = [[OITCarController alloc] initWithNibName:@"OITCarController" bundle:nil];
+    _carController = [OITCarController sharedOITCarController];
     [_view addSubview:[_carController view]];
     [[_carController view] setFrame:[_view frame]];
     [_carController startUpdateTimer];

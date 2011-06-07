@@ -11,6 +11,7 @@
 @class OITRPMModel;
 @class OITVelocityModel;
 @class OITOilModel;
+@class OITTemperatureModel;
 
 @interface OITGearBox : AModel {
 @private
@@ -18,12 +19,16 @@
     OITRPMModel         *_engine;
     OITVelocityModel    *_speed;
     OITOilModel         *_oil;
+    OITTemperatureModel *_temp;
+    
     float               _baseEfficiency;
     float               _efficiency;
 }
 @property (nonatomic, retain) OITRPMModel *engine;
 @property (nonatomic, retain) OITVelocityModel *speed;
 @property (nonatomic, retain) OITOilModel   *oil;
+@property (nonatomic, retain) OITTemperatureModel *temp;
+
 - (void)upshift;
 - (void)downshift;
 - (void)revUp;
