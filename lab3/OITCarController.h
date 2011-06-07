@@ -17,7 +17,9 @@
 
 //TODO:  integrate images for clarity of what goes to what
 
-@interface OITCarController : NSViewController <OITTimeManagerDelegate, OITMeterManagerDelegate> {
+@class AGagueController;
+
+@interface OITCarController : NSViewController <OITTimeManagerDelegate> {
 @private
     
     OITTimerManager* _timerManager;
@@ -31,25 +33,14 @@
     bool _isOn;
     bool _lightsOn;
     
-    OITDigitalReadoutController*     _rpm;
-    OITDigitalReadoutController*    _speed;
-    OITDigitalReadoutController*    _gear;
-    OITDigitalReadoutController*    _fuel;
-    OITDigitalReadoutController*    _oil;
-    OITDigitalReadoutController*    _temp;
-    OITDigitalReadoutController*    _charge;
+    AGagueController    *_widgetController;
     
-    OITDigitalReadoutController*    _odometer;
-    OITDigitalReadoutController*    _trip;
-    
-    NSMutableDictionary*            _allModels;
 }
 
 @property (nonatomic, readonly) bool isOn;
 @property (nonatomic, readonly) bool lightsOn;
 
 - (void)startUpdateTimer;
-- (void)loadComponents;
 
 + (OITCarController*)sharedOITCarController;
 
@@ -65,6 +56,8 @@
 
 - (IBAction)resetTrip:(id)sender;
 - (IBAction)refillGas:(id)sender;
+
+- (IBAction)toggleGagueMode:(id)sender;
 
 - (void)respondToNotification;
 @end

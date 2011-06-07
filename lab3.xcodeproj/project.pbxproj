@@ -11,6 +11,8 @@
 		4E20FA77139E2D2000580074 /* OITChargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E20FA76139E2D1F00580074 /* OITChargeModel.m */; };
 		4E20FA7A139EA29600580074 /* OITOdometerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E20FA79139EA29400580074 /* OITOdometerModel.m */; };
 		4E20FA7D139EA33800580074 /* OITTripMeterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E20FA7C139EA33600580074 /* OITTripMeterModel.m */; };
+		4E20FA80139EC82C00580074 /* OITDigitalGagueController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E20FA7F139EC82B00580074 /* OITDigitalGagueController.m */; };
+		4E20FA83139EC88F00580074 /* AGagueController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E20FA82139EC88F00580074 /* AGagueController.m */; };
 		4E3706C6139757ED00C790F7 /* OITTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3706C5139757ED00C790F7 /* OITTimerManager.m */; };
 		4E69A05C1399FCB100B59104 /* OITVelocityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69A05B1399FCB000B59104 /* OITVelocityModel.m */; };
 		4E69A05F139A00F300B59104 /* OITRPMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69A05E139A00F300B59104 /* OITRPMModel.m */; };
@@ -39,7 +41,6 @@
 		4ED83EB41398BACA00E663C0 /* OITDigitalClockController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ED83EA91398BACA00E663C0 /* OITDigitalClockController.xib */; };
 		4ED83EB51398BACA00E663C0 /* OITClockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED83EAA1398BACA00E663C0 /* OITClockController.m */; };
 		4ED83EB61398BACA00E663C0 /* OITClockAnalogHand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED83EAC1398BACA00E663C0 /* OITClockAnalogHand.m */; };
-		4ED83EB71398BACA00E663C0 /* OITAnalogClockController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ED83EAE1398BACA00E663C0 /* OITAnalogClockController.xib */; };
 		4ED83EB81398BACA00E663C0 /* OITAnalogClockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED83EAF1398BACA00E663C0 /* OITAnalogClockController.m */; };
 		4ED83EB91398BACA00E663C0 /* OITAbstractClockElementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED83EB11398BACA00E663C0 /* OITAbstractClockElementController.m */; };
 		4EE19729139BF07C00A34BD4 /* OITStyledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE19728139BF07C00A34BD4 /* OITStyledView.m */; };
@@ -55,6 +56,10 @@
 		4E20FA79139EA29400580074 /* OITOdometerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITOdometerModel.m; sourceTree = "<group>"; };
 		4E20FA7B139EA33400580074 /* OITTripMeterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITTripMeterModel.h; sourceTree = "<group>"; };
 		4E20FA7C139EA33600580074 /* OITTripMeterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITTripMeterModel.m; sourceTree = "<group>"; };
+		4E20FA7E139EC82B00580074 /* OITDigitalGagueController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITDigitalGagueController.h; sourceTree = "<group>"; };
+		4E20FA7F139EC82B00580074 /* OITDigitalGagueController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITDigitalGagueController.m; sourceTree = "<group>"; };
+		4E20FA81139EC88E00580074 /* AGagueController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGagueController.h; sourceTree = "<group>"; };
+		4E20FA82139EC88F00580074 /* AGagueController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGagueController.m; sourceTree = "<group>"; };
 		4E3706C4139757EC00C790F7 /* OITTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITTimerManager.h; sourceTree = "<group>"; };
 		4E3706C5139757ED00C790F7 /* OITTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITTimerManager.m; sourceTree = "<group>"; };
 		4E69A05A1399FCB000B59104 /* OITVelocityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITVelocityModel.h; sourceTree = "<group>"; };
@@ -108,7 +113,6 @@
 		4ED83EAB1398BACA00E663C0 /* OITClockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITClockController.h; sourceTree = "<group>"; };
 		4ED83EAC1398BACA00E663C0 /* OITClockAnalogHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITClockAnalogHand.m; sourceTree = "<group>"; };
 		4ED83EAD1398BACA00E663C0 /* OITClockAnalogHand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITClockAnalogHand.h; sourceTree = "<group>"; };
-		4ED83EAE1398BACA00E663C0 /* OITAnalogClockController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OITAnalogClockController.xib; sourceTree = "<group>"; };
 		4ED83EAF1398BACA00E663C0 /* OITAnalogClockController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITAnalogClockController.m; sourceTree = "<group>"; };
 		4ED83EB01398BACA00E663C0 /* OITAnalogClockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITAnalogClockController.h; sourceTree = "<group>"; };
 		4ED83EB11398BACA00E663C0 /* OITAbstractClockElementController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITAbstractClockElementController.m; sourceTree = "<group>"; };
@@ -291,6 +295,10 @@
 				4EBA6C0A13961BE0005074DB /* OITCarController.m */,
 				4E69A068139A108900B59104 /* OITMeterManager.h */,
 				4E69A069139A108900B59104 /* OITMeterManager.m */,
+				4E20FA81139EC88E00580074 /* AGagueController.h */,
+				4E20FA82139EC88F00580074 /* AGagueController.m */,
+				4E20FA7E139EC82B00580074 /* OITDigitalGagueController.h */,
+				4E20FA7F139EC82B00580074 /* OITDigitalGagueController.m */,
 				4E3706C4139757EC00C790F7 /* OITTimerManager.h */,
 				4E3706C5139757ED00C790F7 /* OITTimerManager.m */,
 			);
@@ -306,7 +314,6 @@
 				4ED83EAB1398BACA00E663C0 /* OITClockController.h */,
 				4ED83EAC1398BACA00E663C0 /* OITClockAnalogHand.m */,
 				4ED83EAD1398BACA00E663C0 /* OITClockAnalogHand.h */,
-				4ED83EAE1398BACA00E663C0 /* OITAnalogClockController.xib */,
 				4ED83EAF1398BACA00E663C0 /* OITAnalogClockController.m */,
 				4ED83EB01398BACA00E663C0 /* OITAnalogClockController.h */,
 				4ED83EB11398BACA00E663C0 /* OITAbstractClockElementController.m */,
@@ -372,7 +379,6 @@
 				4EBA6C0D13961BE1005074DB /* OITCarController.xib in Resources */,
 				4ED83EB31398BACA00E663C0 /* OITSevenSegmentDigitController.xib in Resources */,
 				4ED83EB41398BACA00E663C0 /* OITDigitalClockController.xib in Resources */,
-				4ED83EB71398BACA00E663C0 /* OITAnalogClockController.xib in Resources */,
 				4E69A06C139B515C00B59104 /* OITDigitalReadout.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +418,8 @@
 				4E20FA77139E2D2000580074 /* OITChargeModel.m in Sources */,
 				4E20FA7A139EA29600580074 /* OITOdometerModel.m in Sources */,
 				4E20FA7D139EA33800580074 /* OITTripMeterModel.m in Sources */,
+				4E20FA80139EC82C00580074 /* OITDigitalGagueController.m in Sources */,
+				4E20FA83139EC88F00580074 /* AGagueController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

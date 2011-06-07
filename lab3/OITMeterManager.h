@@ -39,23 +39,12 @@
     OITTripMeterModel   *_trip;
     
     NSArray             *_allMeters;
-    /*
-     gear   x
-     temp   x
-     fuel   x
-     rpm    x
-     oil    x
-     charge x
-     car    x
-     velocity   x
-     odometer   x
-     trip   x
-     */
     
     id<OITMeterManagerDelegate> _delegate;
 }
 
 @property (nonatomic, retain) id<OITMeterManagerDelegate> delegate;
+@property (nonatomic, retain) OITRPMModel *rpm;
 
 + (OITMeterManager*)sharedOITMeterManager;
 

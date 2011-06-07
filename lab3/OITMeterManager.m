@@ -30,6 +30,7 @@
 static OITMeterManager *sharedInstance = nil;
 
 @synthesize delegate = _delegate;
+@synthesize rpm = _rpm;
 
 - (id)init
 {
