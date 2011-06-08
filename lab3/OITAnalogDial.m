@@ -61,7 +61,8 @@
 }
 
 - (void)updateDisplay {
-    NSUInteger rotationAmount =     round(_value / _maxValue);
-    [_imageViewController rotateByDegrees:rotationAmount - kRotationOffset];
+    float rotationAmount = _value / _maxValue;
+    [_imageView setRotationInDegrees:lround(rotationAmount - kRotationOffset)];
+    [_imageView setNeedsDisplay:true];
 }
 @end
