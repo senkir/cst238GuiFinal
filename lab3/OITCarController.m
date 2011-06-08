@@ -22,7 +22,7 @@
 #import "OITTripMeterModel.h"
 
 #import "OITDigitalGagueController.h"
-
+#import "OITAnalogGagueController.h"
 
 @implementation OITCarController
 
@@ -113,8 +113,9 @@ static OITCarController *sharedInstance = nil;
     [_lightIndicatorView setBackgroundColor:[NSColor grayColor]];
     
     NSRect widgetsRect = self.view.frame;
-//    NSRect widgetsRect = NSMakeRect(0, 300, self.view.frame.size.width, self.view.frame.size.height);
-    _widgetController = [[OITDigitalGagueController alloc] initWithFrame:widgetsRect];
+//    _widgetController = [[OITDigitalGagueController alloc] initWithFrame:widgetsRect];
+    _widgetController = [[OITAnalogGagueController alloc] initWithFrame:widgetsRect];
+    
     [self.view addSubview:_widgetController.view];
     [_meterManager setDelegate:_widgetController];
     [self.view setNeedsDisplay:true];
@@ -202,6 +203,25 @@ static OITCarController *sharedInstance = nil;
 
 - (IBAction)toggleGagueMode:(id)sender {
     [OITLogger logFromSender:[self description] warn:@"toggleGagueMode activated."];
+    AGagueController* controller = nil;
+    NSRect widgetsRect = self.view.frame;
+
+    if ([_widgetController isKindOfClass:[OITDigitalGagueController class]]) {
+        controller = [[OITAnalogGagueController alloc] initWithFrame:widgetsRect];
+    } else {
+        controller = [[OITDigitalGagueController alloc] initWithFrame:widgetsRect];
+    }
+    //get rid of the old view
+    if (_widgetController) {
+        [_widgetController.view removeFromSuperview];
+        [_widgetController release];
+    }
+    
+    //initialize a new one
+    _widgetController = controller;
+    [self.view addSubview:_widgetController.view];
+    [_meterManager setDelegate:_widgetController];
+    [self.view setNeedsDisplay:true];
 }
 
 @end

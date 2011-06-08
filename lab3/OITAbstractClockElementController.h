@@ -10,13 +10,18 @@
 
 
 @interface OITAbstractClockElementController : NSViewController {
-@private
-    NSUInteger _value;
-    NSUInteger _maxValue; //restricts the maximum value of this state
+    float  _value;
+    float  _maxValue; //restricts the maximum value of this state
+    
+    //view relative elements
+    float       _minDegrees;
+    float       _maxDegrees;
 
 }
-@property (nonatomic, assign) NSUInteger maxValue;
-@property (nonatomic, assign) NSUInteger value;
+@property (nonatomic, assign) float maxValue;
+@property (nonatomic, assign) float value;
+@property (nonatomic, assign) float minDegrees;
+@property (nonatomic, assign) float maxDegrees;
 
 - (void)incrementDigit;
 - (void)updateDisplay;

@@ -8,11 +8,12 @@
 
 #import "OITAbstractClockElementController.h"
 
-
 @implementation OITAbstractClockElementController
 
 @synthesize maxValue = _maxValue;
 @synthesize value = _value;
+@synthesize minDegrees = _minDegrees;
+@synthesize maxDegrees = _maxDegrees;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,18 +25,19 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
+//
+//- (void)dealloc
+//{
+//    [super dealloc];
+//}
 
 /**
  Set the current value of this digit to something specific.
  Value will be modded based on maximum for this digit.
  */
-- (void)setValue:(NSUInteger)value {
+- (void)setValue:(float)value {
     if (_value  != value) {
-        _value = round(value % _maxValue);
+        _value = value;
     }
     [self updateDisplay];
 }

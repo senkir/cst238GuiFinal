@@ -20,4 +20,5 @@
 @property (nonatomic, retain) NSMutableDictionary *allModels; 
 
 - (void)loadComponents;
+- (id)initWithFrame:(CGRect)frame;
 @end

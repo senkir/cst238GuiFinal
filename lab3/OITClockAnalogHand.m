@@ -25,7 +25,7 @@
     [super dealloc];
 }
 
-- (void)setValue:(NSUInteger)value {
+- (void)setValue:(float)value {
     [super setValue:value];
     [self updateDisplay];
 }
