@@ -43,7 +43,7 @@
 }
 
 - (bool)isEmpty {
-    return _value > 0 ? true : false;
+    return _value > 0 ? false : true;
 }
 
 - (void)update {

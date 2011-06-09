@@ -76,14 +76,18 @@
 }
 
 - (void)upshift {
+    if (_value < _maxValue) {
     [self incrementValueBy:1.0];
 //    [_engine setDelta:KRPMDeltaForUpshift];
     [_engine setFinalValue:[_engine value] + KRPMDeltaForUpshift WithRate:-kRPMRateOfChange];
+    }
 }
 
 - (void)downshift {
+    if (_value > _minValue) {
     [self incrementValueBy:-1.0];
     [_engine setFinalValue:[_engine value] + kRPMDeltaForDownshift WithRate:kRPMRateOfChange];
+    }
 }
 
 - (float)ratioForGear {

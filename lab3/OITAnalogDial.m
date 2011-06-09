@@ -95,12 +95,12 @@
 
 - (void)setMinDegrees:(float)minDegrees {
     [super setMinDegrees:minDegrees];
-    [_startIndicator setFrame:[self positionForDegrees:_minDegrees]];
+    [_startIndicator setFrame:[self positionForDegrees:-_minDegrees]];
 }
 
 - (void)setMaxDegrees:(float)maxDegrees {
     [super setMaxDegrees:maxDegrees];
-    [_endIndicator setFrame:[self positionForDegrees:_maxDegrees]];
+    [_endIndicator setFrame:[self positionForDegrees:-_maxDegrees]];
 }
 
 - (void)setStartIndicatorText:(NSString*)text {

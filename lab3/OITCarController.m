@@ -162,14 +162,15 @@ static OITCarController *sharedInstance = nil;
     [[_meterManager gearBox] downshift];
 }
 - (IBAction)toggleCarOn:(id)sender {
+    bool isEmpty = [[OITMeterManager sharedOITMeterManager] fuelIsEmpty];
     if (_isOn) {
         _isOn = false;
         [_carOnButton setTitleWithMnemonic:@"Turn &On"];
         [_engineIndicatorView setBackgroundColor:[NSColor redColor]];
-    } else {
+    } else if (!isEmpty) {
         _isOn = true;
         [_carOnButton setTitleWithMnemonic:@"Turn &Off"];
-        [_engineIndicatorView setBackgroundColor:[NSColor grayColor]];
+        [_engineIndicatorView setBackgroundColor:[NSColor greenColor]];
         [self gasPedalPressed:nil];
     }
     [_engineIndicatorView setNeedsDisplay:TRUE];

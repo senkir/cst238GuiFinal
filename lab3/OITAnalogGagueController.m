@@ -16,7 +16,7 @@
 
 #define kYbuffer        10.0
 #define kXbuffer        20.0
-#define kColumnsPerRow   3
+#define kColumnsPerRow   5
 
 @implementation OITAnalogGagueController
 
@@ -44,8 +44,8 @@
     _rpm = [[OITAnalogDial alloc] initWithFrame:CGRectMake(0, 0, kBaseDialWidth, kBaseDialHeight)];
     [_rpm loadView];
     [self.view addSubview:[_rpm view]];
-    [_rpm setMinDegrees:0.0f];
-    [_rpm setMaxDegrees:180.0f];
+    [_rpm setMinDegrees:-30.0f];
+    [_rpm setMaxDegrees:210.0f];
     [_rpm setEndIndicatorText:[NSString stringWithFormat:@"%d", 8]];
     [_rpm setTitleField:@"RPM"];
     [_rpm setMaxValue:8000];
@@ -59,10 +59,88 @@
     [_speed setMaxValue:120.0];
     [_speed setTitleField:@"Speed"];
     
+    _gear = [[OITAnalogDial alloc] initWithFrame:CGRectMake(0, 0, kBaseDialWidth, kBaseDialHeight)];
+    [_gear loadView];
+    [self.view addSubview:[_gear view]];
+    [_gear setMinDegrees:3.0f];
+    [_gear setMaxDegrees:120.0f];
+    [_gear setEndIndicatorText:[NSString stringWithFormat:@"%d", 5]];
+    [_gear setStartIndicatorText:[NSString stringWithFormat:@"%d", 1]];
+    [_gear setMaxValue:5.0];
+    [_gear setTitleField:@"Gear"];
+    
+    _fuel = [[OITAnalogDial alloc] initWithFrame:CGRectMake(0, 0, kBaseDialWidth, kBaseDialHeight)];
+    [_fuel loadView];
+    [self.view addSubview:[_fuel view]];
+    [_fuel setMinDegrees:0.0f];
+    [_fuel setMaxDegrees:180.0f];
+    [_fuel setEndIndicatorText:@"F"];
+    [_fuel setStartIndicatorText:@"E"];
+    [_fuel setMaxValue:12.0];
+    [_fuel setTitleField:@"Fuel"];
+    
+    _oil = [[OITAnalogDial alloc] initWithFrame:CGRectMake(0, 0, kBaseDialWidth, kBaseDialHeight)];
+    [_oil loadView];
+    [self.view addSubview:[_oil view]];
+    [_oil setMinDegrees:20.0f];
+    [_oil setMaxDegrees:160.0f];
+    [_oil setEndIndicatorText:@"100"];
+    [_oil setStartIndicatorText:@"0"];
+    [_oil setMaxValue:100.0];
+    [_oil setTitleField:@"Oil"];
+    
+    _temp = [[OITAnalogDial alloc] initWithFrame:CGRectMake(0, 0, kBaseDialWidth, kBaseDialHeight)];
+    [_temp loadView];
+    [self.view addSubview:[_temp view]];
+    [_temp setMinDegrees:20.0f];
+    [_temp setMaxDegrees:160.0f];
+    [_temp setEndIndicatorText:@"200"];
+    [_temp setStartIndicatorText:@"70"];
+    [_temp setMaxValue:200.0];
+    [_temp setTitleField:@"Temp"];
+    
+    _charge = [[OITAnalogDial alloc] initWithFrame:CGRectMake(0, 0, kBaseDialWidth, kBaseDialHeight)];
+    [_charge loadView];
+    [self.view addSubview:[_charge view]];
+    [_charge setMinDegrees:20.0f];
+    [_charge setMaxDegrees:160.0f];
+    [_charge setEndIndicatorText:@"100"];
+    [_charge setStartIndicatorText:@"0"];
+    [_charge setMaxValue:100.0];
+    [_charge setTitleField:@"Battery"];
+    
+    _odometer = [[OITAnalogDial alloc] initWithFrame:CGRectMake(0, 0, kBaseDialWidth, kBaseDialHeight)];
+    [_odometer loadView];
+    [self.view addSubview:[_odometer view]];
+    [_odometer setMinDegrees:20.0f];
+    [_odometer setMaxDegrees:160.0f];
+    [_odometer setEndIndicatorText:@"100"];
+    [_odometer setStartIndicatorText:@"0"];
+    [_odometer setMaxValue:100.0];
+    [_odometer setTitleField:@"Miles"];
+    
+    _trip = [[OITAnalogDial alloc] initWithFrame:CGRectMake(0, 0, kBaseDialWidth, kBaseDialHeight)];
+    [_trip loadView];
+    [self.view addSubview:[_trip view]];
+    [_trip setMinDegrees:20.0f];
+    [_trip setMaxDegrees:160.0f];
+    [_trip setEndIndicatorText:@"100"];
+    [_trip setStartIndicatorText:@"0"];
+    [_trip setMaxValue:100.0];
+    [_trip setTitleField:@"Trip"];
+    
     _allModels = [[NSMutableDictionary alloc] init];
     [_allModels setValue:_rpm forKey:@"rpm"];
     [_allModels setValue:_speed forKey:@"speed"];
+    [_allModels setValue:_gear forKey:@"gearBox"];
+    [_allModels setValue:_fuel forKey:@"fuel"];
+    [_allModels setValue:_oil forKey:@"oil"];
+    [_allModels setValue:_temp forKey:@"temp"];    
+    [_allModels setValue:_charge forKey:@"charge"];
     
+    [_allModels setValue:_odometer forKey:@"miles"];   
+    [_allModels setValue:_trip forKey:@"trip"];    
+
     NSArray* allControllers = [_allModels allValues];
     float yOffset = 0;
     float xOffset = 0;

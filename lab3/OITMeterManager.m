@@ -165,7 +165,8 @@ static OITMeterManager *sharedInstance = nil;
 
 - (void)fuelIsEmpty:(id)sender {
     [OITLogger logFromSender:[self description] warn:@"Fuel is Empty!"];
-    [_rpm setDelta:kRPMDeltaForNoFuel];
+    [_rpm setFinalValue:0 WithRate:kRPMDeltaForNoFuel];
+    [[OITCarController sharedOITCarController] toggleCarOn:self];
 }
 
 - (float)fuelConsumptionRate {
@@ -203,4 +204,7 @@ static OITMeterManager *sharedInstance = nil;
     return toReturn;
 }
 
+- (bool)fuelIsEmpty {
+    return [_fuel isEmpty];
+}
 @end

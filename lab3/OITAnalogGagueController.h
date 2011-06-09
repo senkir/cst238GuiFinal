@@ -13,6 +13,14 @@
 @private
     OITAnalogDial*  _rpm;
     OITAnalogDial*  _speed;
+    OITAnalogDial*    _gear;
+    OITAnalogDial*    _fuel;
+    OITAnalogDial*    _oil;
+    OITAnalogDial*    _temp;
+    OITAnalogDial*    _charge;
+    
+    OITAnalogDial*    _odometer;
+    OITAnalogDial*    _trip;
 }
 
 @end

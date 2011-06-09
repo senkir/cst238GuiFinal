@@ -55,6 +55,6 @@
 
 - (void)resetTrip;
 - (void)refillGas;
-
+- (bool)fuelIsEmpty;
 - (OITGearBox*)gearBox;
 @end
