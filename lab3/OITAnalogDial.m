@@ -12,7 +12,7 @@
 #import "OITLogger.h"
 
 #define kImagePointerName       @"dial.png"
-#define kRotationOffset         0
+#define kRotationOffset         90.0
 
 @implementation OITAnalogDial
 
@@ -64,11 +64,15 @@
 - (void)updateDisplay {
     [_imageView removeFromSuperview];
     [self.view addSubview:_imageView];
+
+    float minRotation = _minDegrees;
+    float maxRotation = _maxDegrees;
+    float percentRotation = -_value / _maxValue;
+    float finalRotation = (_maxDegrees - _minDegrees) * percentRotation + kRotationOffset;
     
-    float rotationAmount = _value / _maxValue;
-    NSString* message = [NSString stringWithFormat:@"rotation: %f", rotationAmount];
+    NSString* message = [NSString stringWithFormat:@"rotation: %f", finalRotation];
     [OITLogger logFromSender:[self description] warn:message];
-    [_imageView setRotationInDegrees:lround(rotationAmount - kRotationOffset)];
+    [_imageView setRotationInDegrees:lround(finalRotation)];
     [self.view setNeedsDisplay:true];
     [_imageView setNeedsDisplay:true];
 }

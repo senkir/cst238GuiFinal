@@ -12,6 +12,7 @@
 @interface OITAnalogGagueController : AGagueController {
 @private
     OITAnalogDial*  _rpm;
+    OITAnalogDial*  _speed;
 }
 
 @end

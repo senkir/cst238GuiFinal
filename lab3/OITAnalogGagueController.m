@@ -40,12 +40,35 @@
     _rpm = [[OITAnalogDial alloc] initWithFrame:CGRectMake(0, 0, kBaseDialWidth, kBaseDialHeight)];
     [_rpm loadView];
     [self.view addSubview:[_rpm view]];
-    [_rpm setMinDegrees:-90.0f];
+    [_rpm setMinDegrees:0.0f];
     [_rpm setMaxDegrees:180.0f];
-    [_rpm setMaxValue:0.07];
+    [_rpm setMaxValue:8000];
+    
+//    _speed = [[OITAnalogDial alloc] initWithFrame:CGRectMake(500, 500, kBaseDialWidth, kBaseDialHeight)];
+//    [_speed loadView];
+//    [self.view addSubview:[_rpm view]];
+//    [_speed setMinDegrees:0.0f];
+//    [_speed setMaxDegrees:180.0f];
+//    [_speed setMaxValue:.07];
     
     _allModels = [[NSMutableDictionary alloc] init];
     [_allModels setValue:_rpm forKey:@"rpm"];
+//    [_allModels setValue:_speed forKey:@"speed"];
+    
+//    float yOffset = 0;
+//    float xOffset = 0;
+//    for (int i = 1; i < [_allModels count]; i++) {
+//        NSViewController* controller = [_allModels objectAtIndex:i];
+//        [[controller view] setFrame:NSMakeRect(xOffset,
+//                                               self.view.frame.size.height - controller.view.frame.size.height - yOffset,
+//                                               controller.view.frame.size.width, 
+//                                               controller.view.frame.size.height)];
+//        xOffset += controller.view.frame.size.width + 5;
+//        if ( 0 == i % 5 ) {
+//            yOffset += controller.view.frame.size.height + 5;
+//            xOffset = 0;
+//        }
+//    }
     
 //    [_rpm.view setFrame:CGRectMake(0, self.view.frame.size.height - kBaseDialHeight, kBaseDialWidth, kBaseDialHeight)];
 //    [_rpm.view setNeedsDisplay:true];
