@@ -7,8 +7,10 @@
 //
 
 #import "OITDigitalReadoutController.h"
+#import "OITStyledView.h"
 
-#define kXbuffer  2.0f
+#define kXbuffer  10.0f
+#define kYbuffer  15.0f
 
 @implementation OITDigitalReadoutController
 
@@ -74,9 +76,10 @@
         }
 
         offsetX = (width + kXbuffer ) * i;
-        [digitController.view setFrame:NSMakeRect(offsetX, height / 2, width, height)];
+        [digitController.view setFrame:NSMakeRect(offsetX, height - kYbuffer, width, height)];
     }
-    [self.view setFrame:NSMakeRect(0, height, (width + kXbuffer) * digitCount, height)];
+    [self.view setFrame:NSMakeRect(self.view.frame.origin.x, self.view.frame.origin.y, (width + kXbuffer) * digitCount, height + kYbuffer)];
+    [(OITStyledView*)self.view setBackgroundColor:[NSColor yellowColor]];
 }
 
 - (void)setupControllerArray {

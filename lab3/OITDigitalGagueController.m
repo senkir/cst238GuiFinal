@@ -21,8 +21,6 @@
 
 - (void)dealloc
 {
-    
-    
     [_rpm release];
     _rpm = nil;
     [_speed release];
@@ -114,7 +112,7 @@
     
     /******* Position Gagues ******/
     
-    for (int i = 1; i < [allControllers count]; i++) {
+    for (int i = 0; i < [allControllers count]; i++) {
         NSViewController* controller = [allControllers objectAtIndex:i];
         [[controller view] setFrame:NSMakeRect(xOffset,
                                                self.view.frame.size.height - controller.view.frame.size.height - yOffset,

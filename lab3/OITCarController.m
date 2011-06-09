@@ -116,9 +116,9 @@ static OITCarController *sharedInstance = nil;
     _widgetController = [[OITDigitalGagueController alloc] initWithFrame:widgetsRect];
 //    _widgetController = [[OITAnalogGagueController alloc] initWithFrame:widgetsRect];
     
-    [self.view addSubview:_widgetController.view];
+    [_readoutView addSubview:_widgetController.view];
     [_meterManager setDelegate:_widgetController];
-    [self.view setNeedsDisplay:true];
+    [_readoutView setNeedsDisplay:true];
 }
 
 
@@ -219,9 +219,9 @@ static OITCarController *sharedInstance = nil;
     
     //initialize a new one
     _widgetController = controller;
-    [self.view addSubview:_widgetController.view];
+    [_readoutView addSubview:_widgetController.view];
     [_meterManager setDelegate:_widgetController];
-    [self.view setNeedsDisplay:true];
+    [_readoutView setNeedsDisplay:true];
 }
 
 @end

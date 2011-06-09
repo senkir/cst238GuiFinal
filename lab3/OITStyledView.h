@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-
+/**
+ A view with a background color
+ */
 @interface OITStyledView : NSView {
 @private
     NSColor* _backgroundColor;

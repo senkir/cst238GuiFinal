@@ -30,6 +30,7 @@
     IBOutlet NSButton   *_lightsButton;
     IBOutlet OITStyledView *_engineIndicatorView;
     IBOutlet OITStyledView *_lightIndicatorView;
+    IBOutlet NSView       *_readoutView;
     bool _isOn;
     bool _lightsOn;
     

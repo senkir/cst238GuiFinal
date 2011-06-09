@@ -34,6 +34,15 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<array class="NSMutableArray" key="NSSubviews">
+					<object class="NSCustomView" id="321379211">
+						<reference key="NSNextResponder" ref="1005"/>
+						<int key="NSvFlags">268</int>
+						<string key="NSFrame">{{20, 158}, {861, 366}}</string>
+						<reference key="NSSuperview" ref="1005"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="266415632"/>
+						<string key="NSClassName">OITStyledView</string>
+					</object>
 					<object class="NSButton" id="266415632">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
@@ -194,6 +203,7 @@
 						<string key="NSFrame">{{517, 38}, {96, 32}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="547239957">
 							<int key="NSCellFlags">67239424</int>
@@ -257,7 +267,7 @@
 				<string key="NSFrameSize">{901, 539}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="266415632"/>
+				<reference key="NSNextKeyView" ref="321379211"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 		</array>
@@ -375,6 +385,14 @@
 					</object>
 					<int key="connectionID">51</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">_readoutView</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="321379211"/>
+					</object>
+					<int key="connectionID">53</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -417,6 +435,7 @@
 							<reference ref="252118597"/>
 							<reference ref="965371213"/>
 							<reference ref="266415632"/>
+							<reference ref="321379211"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -547,6 +566,11 @@
 						<reference key="object" ref="415909358"/>
 						<reference key="parent" ref="266415632"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">52</int>
+						<reference key="object" ref="321379211"/>
+						<reference key="parent" ref="1005"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -574,6 +598,7 @@
 				<string key="49.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="50.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="52.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -582,7 +607,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">51</int>
+			<int key="maxID">53</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -643,6 +668,7 @@
 						<string key="_engineIndicatorView">OITStyledView</string>
 						<string key="_lightIndicatorView">OITStyledView</string>
 						<string key="_lightsButton">NSButton</string>
+						<string key="_readoutView">NSView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="_carOnButton">
@@ -660,6 +686,10 @@
 						<object class="IBToOneOutletInfo" key="_lightsButton">
 							<string key="name">_lightsButton</string>
 							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_readoutView">
+							<string key="name">_readoutView</string>
+							<string key="candidateClassName">NSView</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
