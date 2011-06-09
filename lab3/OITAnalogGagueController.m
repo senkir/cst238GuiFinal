@@ -14,6 +14,10 @@
 #define kBaseDialHeight     120.0f
 #define kBaseDialWidth      120.0f
 
+#define kYbuffer        10.0
+#define kXbuffer        20.0
+#define kColumnsPerRow   3
+
 @implementation OITAnalogGagueController
 
 - (id)init
@@ -44,37 +48,35 @@
     [_rpm setMaxDegrees:180.0f];
     [_rpm setMaxValue:8000];
     
-//    _speed = [[OITAnalogDial alloc] initWithFrame:CGRectMake(500, 500, kBaseDialWidth, kBaseDialHeight)];
-//    [_speed loadView];
-//    [self.view addSubview:[_rpm view]];
-//    [_speed setMinDegrees:0.0f];
-//    [_speed setMaxDegrees:180.0f];
-//    [_speed setMaxValue:.07];
+    _speed = [[OITAnalogDial alloc] initWithFrame:CGRectMake(0, 0, kBaseDialWidth, kBaseDialHeight)];
+    [_speed loadView];
+    [self.view addSubview:[_speed view]];
+    [_speed setMinDegrees:0.0f];
+    [_speed setMaxDegrees:180.0f];
+    [_speed setMaxValue:120.0];
     
     _allModels = [[NSMutableDictionary alloc] init];
     [_allModels setValue:_rpm forKey:@"rpm"];
-//    [_allModels setValue:_speed forKey:@"speed"];
+    [_allModels setValue:_speed forKey:@"speed"];
     
-//    float yOffset = 0;
-//    float xOffset = 0;
-//    for (int i = 1; i < [_allModels count]; i++) {
-//        NSViewController* controller = [_allModels objectAtIndex:i];
-//        [[controller view] setFrame:NSMakeRect(xOffset,
-//                                               self.view.frame.size.height - controller.view.frame.size.height - yOffset,
-//                                               controller.view.frame.size.width, 
-//                                               controller.view.frame.size.height)];
-//        xOffset += controller.view.frame.size.width + 5;
-//        if ( 0 == i % 5 ) {
-//            yOffset += controller.view.frame.size.height + 5;
-//            xOffset = 0;
-//        }
-//    }
+    NSArray* allControllers = [_allModels allValues];
+    float yOffset = 0;
+    float xOffset = 0;
+    /******* Position Gagues ******/
     
-//    [_rpm.view setFrame:CGRectMake(0, self.view.frame.size.height - kBaseDialHeight, kBaseDialWidth, kBaseDialHeight)];
-//    [_rpm.view setNeedsDisplay:true];
-    
-//    [self.view setNextResponder:[OITCarController sharedOITCarController].view];
-
+    for (int i = 0; i < [allControllers count]; i++) {
+        NSViewController* controller = [allControllers objectAtIndex:i];
+        if (yOffset == 0 ) yOffset = controller.view.frame.size.height + kYbuffer;
+        if ( 0 == i % kColumnsPerRow ) {
+            yOffset += controller.view.frame.size.height + kYbuffer;
+            xOffset = 0;
+        }
+        [[controller view] setFrame:NSMakeRect(xOffset,
+                                               self.view.frame.size.height - controller.view.frame.size.height - yOffset,
+                                               controller.view.frame.size.width, 
+                                               controller.view.frame.size.height)];
+        xOffset += controller.view.frame.size.width + kXbuffer;
+    }
 }
 
 -(void)modelDidUpdate:(AModel*)model {

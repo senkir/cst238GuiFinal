@@ -108,21 +108,22 @@
     
     NSArray* allControllers = [_allModels allValues];
     NSUInteger xOffset = 0;
-    NSUInteger yOffset = kYbuffer;
+    NSUInteger yOffset = 0;
     
     /******* Position Gagues ******/
     
     for (int i = 0; i < [allControllers count]; i++) {
         NSViewController* controller = [allControllers objectAtIndex:i];
+        if (yOffset == 0 ) yOffset = controller.view.frame.size.height + kYbuffer;
+        if ( 0 == i % kColumnsPerRow ) {
+            yOffset += controller.view.frame.size.height + kYbuffer;
+            xOffset = 0;
+        }
         [[controller view] setFrame:NSMakeRect(xOffset,
                                                self.view.frame.size.height - controller.view.frame.size.height - yOffset,
                                                controller.view.frame.size.width, 
                                                controller.view.frame.size.height)];
         xOffset += controller.view.frame.size.width + kXbuffer;
-        if ( 0 == i % kColumnsPerRow ) {
-            yOffset += controller.view.frame.size.height + kYbuffer;
-            xOffset = 0;
-        }
     }
     
     [self.view setNextResponder:[OITCarController sharedOITCarController].view];
