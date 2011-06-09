@@ -30,3 +30,13 @@ ALSO GOOD TO KNOW:  if you override loadView, remember to call [super loadView] 
 I also just spent a couple hours trying to get rid of duplicate layers in my images.  For some reason instantiating a controller as a subview of another controller has crazy results if I don't make a new NSView inside loadView.  That's actually pretty irritating because I don't think I should have to do that if i'm calling initWithNibName:bundle: with nil values.
 
 I'm having trouble integrating the analog clock hands into the gagues of my controller.  It's displaying at this point, but the rotation is not updating again.  I suspect it is something obvious but I haven't been making progress.  
+
+I finally figured out how to rig the analog dials.  I had to fix the way I was calculating the angle of rotation for the little needle.  I also added in a method for labeling the sides of the indicator with numbers as a factor of the min/max degree of rotation for the dial.  It should work well enough for what I'm doing, even if it's not that pretty.  
+
+I rigged a background color class to make it easier to tell where the frame ended on my nsview objects.  This is one of those things that Cocoa-Touch already has a method for, but I had to build by hand for regular Cocoa.  It looks a little nicer this way than with just the gray, so I'll probably just keep the colors in there when I turn it in.
+
+The needle on the analog odometer barely moves, due to the scale.  I'll reduce the maximum so it fluctuates, i suppose.
+
+Wiring the analog controllers to the models turned out to be really easy, actually.  The toughest part was getting the dials to display.  In retrospect I could have built a factory for setting up those dials, but It's in there now, so I'll just leave it.  That's another design pattern that I forget about sometimes.  
+
+After the presentation, I realized that at some point I broke the trigger that caused the car to turn off when it ran out of gas.  I realize now that I had turned it off intentionally when the car was turning off prematurely.  This was due to a miscalculation in the isEmpty method of the fuel model.  I've now fixed this.  Now the car turns off when it is out of gas.  I also made it so the car will not turn on while it is out of gas, either.  You have to hit the button to refill the gas tank.
