@@ -36,6 +36,7 @@
  Value will be modded based on maximum for this digit.
  */
 - (void)setValue:(float)value {
+    value = value / 500;
     if (_value  != value) {
         _value = value;
     }
@@ -48,5 +49,6 @@
 
 - (void)updateDisplay {
     //default does nothing
+    
 }
 @end

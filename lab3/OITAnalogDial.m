@@ -9,9 +9,10 @@
 #import "OITAnalogDial.h"
 #import "OITAnalogGagueBackgroundView.h"
 #import "OITClockAnalogHand.h"
+#import "OITLogger.h"
 
 #define kImagePointerName       @"dial.png"
-#define kRotationOffset         90
+#define kRotationOffset         0
 
 @implementation OITAnalogDial
 
@@ -61,8 +62,14 @@
 }
 
 - (void)updateDisplay {
+    [_imageView removeFromSuperview];
+    [self.view addSubview:_imageView];
+    
     float rotationAmount = _value / _maxValue;
+    NSString* message = [NSString stringWithFormat:@"rotation: %f", rotationAmount];
+    [OITLogger logFromSender:[self description] warn:message];
     [_imageView setRotationInDegrees:lround(rotationAmount - kRotationOffset)];
+    [self.view setNeedsDisplay:true];
     [_imageView setNeedsDisplay:true];
 }
 @end

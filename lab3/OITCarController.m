@@ -113,8 +113,8 @@ static OITCarController *sharedInstance = nil;
     [_lightIndicatorView setBackgroundColor:[NSColor grayColor]];
     
     NSRect widgetsRect = self.view.frame;
-//    _widgetController = [[OITDigitalGagueController alloc] initWithFrame:widgetsRect];
-    _widgetController = [[OITAnalogGagueController alloc] initWithFrame:widgetsRect];
+    _widgetController = [[OITDigitalGagueController alloc] initWithFrame:widgetsRect];
+//    _widgetController = [[OITAnalogGagueController alloc] initWithFrame:widgetsRect];
     
     [self.view addSubview:_widgetController.view];
     [_meterManager setDelegate:_widgetController];

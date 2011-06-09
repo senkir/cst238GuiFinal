@@ -40,9 +40,9 @@
     _rpm = [[OITAnalogDial alloc] initWithFrame:CGRectMake(0, 0, kBaseDialWidth, kBaseDialHeight)];
     [_rpm loadView];
     [self.view addSubview:[_rpm view]];
-    [_rpm setMinDegrees:0.0f];
+    [_rpm setMinDegrees:-90.0f];
     [_rpm setMaxDegrees:180.0f];
-    [_rpm setMaxValue:8000];
+    [_rpm setMaxValue:0.07];
     
     _allModels = [[NSMutableDictionary alloc] init];
     [_allModels setValue:_rpm forKey:@"rpm"];
@@ -64,6 +64,7 @@
     } else {
 //        float viewCoefficient = 1.0f;
         [gague setValue:[model value]];
+        
     }
     //    if (_isOn && [_rpm value] == 0) [self toggleCarOn:false];
 }

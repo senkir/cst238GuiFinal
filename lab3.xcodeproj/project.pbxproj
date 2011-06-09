@@ -298,9 +298,9 @@
 		4EBA6BEC1395F723005074DB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4EBA6BF313960111005074DB /* OITImageView.h */,
 				4EE19727139BF07B00A34BD4 /* OITStyledView.h */,
 				4EE19728139BF07C00A34BD4 /* OITStyledView.m */,
+				4EBA6BF313960111005074DB /* OITImageView.h */,
 				4EBA6BF213960111005074DB /* OITImageView.m */,
 				4EBA6BE21395F6CB005074DB /* MainMenu.xib */,
 				4E69A06B139B515C00B59104 /* OITDigitalReadout.xib */,
@@ -340,8 +340,8 @@
 				4ED83EA91398BACA00E663C0 /* OITDigitalClockController.xib */,
 				4ED83EAA1398BACA00E663C0 /* OITClockController.m */,
 				4ED83EAB1398BACA00E663C0 /* OITClockController.h */,
-				4ED83EAC1398BACA00E663C0 /* OITClockAnalogHand.m */,
 				4ED83EAD1398BACA00E663C0 /* OITClockAnalogHand.h */,
+				4ED83EAC1398BACA00E663C0 /* OITClockAnalogHand.m */,
 				4ED83EAF1398BACA00E663C0 /* OITAnalogClockController.m */,
 				4ED83EB01398BACA00E663C0 /* OITAnalogClockController.h */,
 				4EBA6BEF13960111005074DB /* OITTimeModel.h */,

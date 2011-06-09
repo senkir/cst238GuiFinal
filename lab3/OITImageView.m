@@ -30,7 +30,9 @@
     NSAffineTransform *rotateTF = [NSAffineTransform transform];
     
 //    NSSize mySize = [[self image] size];
-    NSPoint centerPoint = NSMakePoint(90, 100);
+    float x = rect.size.width / 2;
+    float y = rect.size.height / 2;
+    NSPoint centerPoint = NSMakePoint(x, y);
     
     [rotateTF translateXBy: centerPoint.x yBy: centerPoint.y];
     [rotateTF rotateByDegrees:self.rotationInDegrees];

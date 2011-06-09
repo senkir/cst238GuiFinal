@@ -8,7 +8,7 @@
 
 #import "OITLogger.h"
 
-#define kLogLevel       3
+#define kLogLevel       2
 #define kLogError       1
 #define kLogWarn        2
 #define kLogDebug       3
