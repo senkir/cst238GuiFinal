@@ -46,6 +46,8 @@
     [self.view addSubview:[_rpm view]];
     [_rpm setMinDegrees:0.0f];
     [_rpm setMaxDegrees:180.0f];
+    [_rpm setEndIndicatorText:[NSString stringWithFormat:@"%d", 8]];
+    [_rpm setTitleField:@"RPM"];
     [_rpm setMaxValue:8000];
     
     _speed = [[OITAnalogDial alloc] initWithFrame:CGRectMake(0, 0, kBaseDialWidth, kBaseDialHeight)];
@@ -53,7 +55,9 @@
     [self.view addSubview:[_speed view]];
     [_speed setMinDegrees:0.0f];
     [_speed setMaxDegrees:180.0f];
+    [_speed setEndIndicatorText:[NSString stringWithFormat:@"%d", 120]];
     [_speed setMaxValue:120.0];
+    [_speed setTitleField:@"Speed"];
     
     _allModels = [[NSMutableDictionary alloc] init];
     [_allModels setValue:_rpm forKey:@"rpm"];

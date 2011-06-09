@@ -34,7 +34,7 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="NSCustomView" id="321379211">
+					<object class="NSCustomView" id="253240266">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{20, 158}, {861, 366}}</string>
@@ -267,7 +267,7 @@
 				<string key="NSFrameSize">{901, 539}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="321379211"/>
+				<reference key="NSNextKeyView" ref="253240266"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 		</array>
@@ -389,7 +389,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">_readoutView</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="321379211"/>
+						<reference key="destination" ref="253240266"/>
 					</object>
 					<int key="connectionID">53</int>
 				</object>
@@ -435,7 +435,7 @@
 							<reference ref="252118597"/>
 							<reference ref="965371213"/>
 							<reference ref="266415632"/>
-							<reference ref="321379211"/>
+							<reference ref="253240266"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -568,7 +568,8 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">52</int>
-						<reference key="object" ref="321379211"/>
+						<reference key="object" ref="253240266"/>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="1005"/>
 					</object>
 				</array>
@@ -607,7 +608,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">53</int>
+			<int key="maxID">55</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
